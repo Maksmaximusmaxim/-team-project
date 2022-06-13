@@ -1,0 +1,43 @@
+
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+   justify-content:space-between;
+}
+
+.list__element {
+    width: 309px;
+    height: 449px;
+    border-radius: 5px;
+  }
+
+ 
+  .info_genre {
+    margin-bottom: 10px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ff6b01;
+  }
+
+
+  .info_title {
+    margin-top: 8px;
+    margin-bottom: 5px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+  
+    color: #000000;
+  }
+
+  .visually-hidden{
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    position: absolute;
+  }
