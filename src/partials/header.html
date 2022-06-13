@@ -1,1 +1,33 @@
-<h1>hi</h1>
+<header class="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo-wrap">
+                <a class="logo-title" href="/src/index.html">
+                    <svg width="24" height="24">
+                        <use href="/src/images/sprite.svg#icon-film"></use>
+                    </svg>
+                </a>
+                <a href="/src/index.html">
+                    <h1 class="title">Filmoteka</h1>
+                </a>
+            </div>
+
+            <ul class="list-refs">
+                <li class="list-items">
+                    <a class="header-refs active" href="/src/index.html">Home</a>
+                </li>
+                <li class="list-items">
+                    <a class="header-refs refs-library" href="">My Library</a>
+                </li>
+            </ul>
+        </div>
+        <form class="search-form" id="search-form">
+            <input class="search" type="text" name="searchQuery" autocomplete="off" placeholder="Search movies" />
+            <button class="btn-search" type="submit">
+                <svg class="icon-search" width="12" height="12">
+                    <use href="/src/images/sprite.svg#icon-search"></use>
+                </svg>
+            </button>
+        </form>
+    </div>
+</header>
