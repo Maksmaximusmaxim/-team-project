@@ -1,0 +1,2 @@
+const e=document.querySelector('[data-action="open-modal"]'),t=document.querySelector('[data-action="close-modal"]'),o=document.querySelector(".js-backdrop");function c(){document.body.classList.remove("show-modal")}e.addEventListener("click",(function(){document.body.classList.add("show-modal")})),t.addEventListener("click",c),o.addEventListener("click",(function(e){e.currentTarget===e.target&&c()})),window.addEventListener("keydown",(function(e){"Escape"===e.code&&c()}));
+//# sourceMappingURL=index.915220cb.js.map
