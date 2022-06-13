@@ -1,9 +1,9 @@
 
 // Основні змінні
 
-const open = document.querySelector('[data-action="open-modal"]'),
-   close = document.querySelector('[data-action="close-modal"]'),
-   backdrop = document.querySelector('.js-backdrop');
+const open = document.querySelector('[data-action="open-modal"]');
+const close = document.querySelector('[data-action="close-modal"]');
+const backdrop = document.querySelector('.js-backdrop');
 
 // Слухачі   
 
