@@ -1,13 +1,16 @@
 .header {
-  padding-top: 40px;
+  margin: 0 auto;
+  padding-top: 45px;
   padding-bottom: 92px;
   background-image: url(/src/images/mobheader-1x.jpg);
+  background-repeat: no-repeat;
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     background-image: url(/src/images/mobheader-2x.jpg);
   }
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 768px) {
+    padding-bottom: 80px;
     background-image: url(/src/images/tabheader-1x.jpg);
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -26,19 +29,21 @@
 }
 .title {
   display: none;
+  margin-left: 8px;
   @media screen and (min-width: 768px) {
     display: flex;
     font-size: 30px;
     line-height: 1.16;
     color: #ffffff;
-    margin-left: 8px;
+  }
+  @media screen and (min-width: 1024px) {
+    margin-left: 10px;
   }
 }
 .header-wrapper {
   margin-bottom: 54px;
   display: flex;
   justify-content: space-between;
-  // align-items: center;
 }
 .logo-wrap {
   display: flex;
@@ -70,9 +75,9 @@
 }
 .search-form {
   position: relative;
+  outline: none;
   @media screen and (min-width: 768px) {
     width: 336px;
-    display: block;
     margin: 0 auto;
   }
 }
@@ -85,7 +90,11 @@
   background-color: transparent;
   width: 100%;
 }
-.search::placeholder {
+.search:focus {
+  outline: none;
+}
+.search::placeholder,
+.search {
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
