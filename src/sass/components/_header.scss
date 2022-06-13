@@ -1,0 +1,102 @@
+.header {
+  padding-top: 40px;
+  padding-bottom: 92px;
+  background-image: url(/src/images/mobheader-1x.jpg);
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(/src/images/mobheader-2x.jpg);
+  }
+  @media screen and (min-width: 1024px) {
+    background-image: url(/src/images/tabheader-1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(/src/images/tabheader-2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    background-image: url(/src/images/deskheader-1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(/src/images/deskheader-2x.jpg);
+    }
+  }
+}
+.title {
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    font-size: 30px;
+    line-height: 1.16;
+    color: #ffffff;
+    margin-left: 8px;
+  }
+}
+.header-wrapper {
+  margin-bottom: 54px;
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+}
+.logo-wrap {
+  display: flex;
+  align-items: baseline;
+}
+.list-refs {
+  display: flex;
+}
+.list-items:not(:last-child) {
+  margin-right: 40px;
+}
+.header-refs {
+  position: relative;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.16;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+.active::after {
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 3px;
+  background-color: #ff6b08;
+}
+.search-form {
+  position: relative;
+  @media screen and (min-width: 768px) {
+    width: 336px;
+    display: block;
+    margin: 0 auto;
+  }
+}
+.search {
+  padding: 4px;
+  border-right: none;
+  border-top: none;
+  border-left: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: transparent;
+  width: 100%;
+}
+.search::placeholder {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: #ffffff;
+}
+.btn-search {
+  border: none;
+  background-color: transparent;
+}
+.icon-search {
+  position: absolute;
+  right: 0;
+  top: 6px;
+}
