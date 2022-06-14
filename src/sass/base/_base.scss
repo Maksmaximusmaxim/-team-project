@@ -12,20 +12,21 @@ img {
 .container {
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
+
+	max-width: 310px;
+
 	@media screen and (min-width:480px){
-	width: 480px;
+	width: 310px;
 	}	
 	
-@media screen and (min-width: 768px) {
-padding-left: 32px; 
-padding-right: 32px;
-}
-@media screen and (min-width:1024px){
-	width: 1024px;
-}
-
+	@media screen and (min-width: 768px) {
+	width: 734px;
+	}
+	@media screen and (min-width:1024px){
+		width: 989px;
+	}
 
 }
 
@@ -34,20 +35,4 @@ a {
 }
 body{
     font-family: 'Roboto', sans-serif;
-}
-
-.visually-hidden {
-	position: absolute;
-
-	clip: rect(0 0 0 0);
-
-	width: 1px;
-
-	height: 1px;
-
-	margin: -1px;
-
-	padding: 0;
-
-	overflow: hidden;
 }
