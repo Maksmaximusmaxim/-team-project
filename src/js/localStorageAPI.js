@@ -1,29 +1,43 @@
 const localStorageAPI = {
-  // Перевірка сховища за ключем, отримання даних
-  loadMovies(key) {
-    const storageData = localStorage.getItem(key)
-      ? JSON.parse(localStorage.getItem(key))
-      : [];
-
-    return storageData;
+  // Отримання даних за ключем. Повертає дані, або null
+  loadData(key) {
+    const localStorageData = localStorage.getItem(key);
+    return JSON.parse(localStorageData);
   },
 
-  // Запис нових даних до сховища
-  saveMovies(key, value) {
-    const currentData = this.loadMovies(key);
-    const newData = currentData.push(value);
-    const dataToSave = JSON.stringify(newData);
-
-    localStorage.setItem(dataToSave);
+  // Запис даних до сховища. Записує дані з ключем key
+  saveData(key, value) {
+    const dataToSave = JSON.stringify(value);
+    localStorage.setItem(key, dataToSave);
   },
 
-  //   Видалення даних зі сховища
+  // Отримання колекції фільмів. Повертає масив фільмів, або порожній масив з його попереднім записом до сховища
+  getMovies(key) {
+    const movies = this.loadData(key);
+    if (!movies) {
+      this.saveData(key, []);
+      return [];
+    } else {
+      return movies;
+    }
+  },
+
+  // Додавання фільмів до колекції. Додає новий елемент до поточної колекції фільмів у сховищі
+  setMovie(key, value) {
+    const currentCollection = this.getMovies(key);
+    currentCollection.push(value);
+
+    this.saveData(key, currentCollection);
+  },
+
   removeMovie(key, value) {
-    const currentData = this.loadMovies(key);
-    currentData.splice(currentData.indexOf(value), 1);
-    const dataToSave = JSON.stringify(currentData);
+    const currentCollection = this.getMovies(key);
+    const indexToRemove = currentCollection.indexOf(value);
 
-    localStorage.setItem(dataToSave);
+    if (indexToRemove >= 0) {
+      currentCollection.splice(indexToRemove, 1);
+      this.saveData(key, currentCollection);
+    }
   },
 };
 
