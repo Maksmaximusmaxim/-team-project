@@ -40,10 +40,52 @@
     }
   }
 }
+.header-library {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+    url(/src/images/mobLibrary-1x.jpg);
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/mobLibrary-2x.jpg);
+  }
+  @media screen and (min-width: 768px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/tabLibrary-1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/tabLibrary-2x.jpg);
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
+      url(/src/images/deskLibrary-1x.jpg);
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url(/src/images/deskLibrary-2x.jpg);
+    }
+  }
+}
+.logo-title {
+  display: flex;
+  align-items: center;
+}
 .title {
   display: none;
   margin-left: 8px;
   @media screen and (min-width: 768px) {
+    font-weight: 500;
     display: flex;
     font-size: 30px;
     line-height: 1.16;
@@ -95,7 +137,7 @@
   }
 }
 .search {
-  padding: 4px;
+  padding: 0 25px 4px 0;
   border-right: none;
   border-top: none;
   border-left: none;
@@ -120,13 +162,20 @@
 .icon-search {
   position: absolute;
   right: 0;
-  top: 6px;
+  top: 4px;
 }
 .list-btn {
   display: flex;
+  justify-content: space-between;
+
+  @media screen and (min-width: 321px) {
+    justify-content: center;
+  }
 }
 .list-btn-item:first-child {
-  margin-right: 20px;
+  @media screen and (min-width: 321px) {
+    margin-right: 20px;
+  }
 }
 
 .btn {
@@ -141,4 +190,10 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-transform: uppercase;
+}
+.btn:hover,
+.btn:focus {
+  background-color: #ff6b01;
+  cursor: pointer;
+  border: none;
 }
