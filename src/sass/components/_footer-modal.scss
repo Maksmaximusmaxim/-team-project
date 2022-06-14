@@ -27,16 +27,103 @@ body.show-modal .modal {
 }
 
 .modal {
-   padding: 24px;
+   padding: 30px;
    border-radius: 8px;
-   max-width: 840px;
-   width: 100%;
-   min-height: 520px;
+   // max-width: 840px;
+   width: 90%;
+   height: 90%;
+   // min-height: 520px;
    background-color: #fff;
    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 
    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
+   overflow-y: scroll;
    transform: scale(1.1);
    transition: transform 250ms ease-in-out;
 }
+
+.close-modal {
+   margin-bottom: 15px;
+   border-radius: 360px;
+   width: 25px;
+   font-family: 'Roboto';
+   font-weight: 400;
+   text-align: center;
+   font-size: 20px;
+   color: rgba(84, 84, 84, 1);
+   background-color: #fff;
+   border: 0;
+   &:hover, &:focus {
+      color: #fff;
+      background-color: #FF6B08;
+      transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer; 
+   }
+}
+
+// Налаштування карток команди
+
+.card-conteiner {
+   
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: -20px;
+   margin-bottom: -20px;   
+   }
+   
+   .card {
+      display: block;
+      position: relative;
+      // flex-basis: calc((100% - 60px) / 3);
+      margin-left: 20px;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      background-color: #F7F7F7;
+      // max-width: 250px;
+      width: 200px;
+      border-radius: 10px;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 
+      0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
+      0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+      @media screen and (max-width: 1023px) { 
+         justify-content: center;
+         width: 300px;
+         }
+         // @media screen and (min-width: 768px) { 
+         //    width: 300px;
+         //    }
+   }
+   .card-icon {
+      position: absolute;
+      width: 40px;
+      fill: #545454;
+      top: 180px;
+      right: 10px;
+      transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+      &:focus, &:hover {
+         fill: #FF6B08;
+         cursor: pointer; 
+      } 
+   }
+   
+   .card-name {
+   font-family: 'Roboto';
+   color: #545454;
+   font-weight: 600;
+   text-align: center;
+   font-size: 15px;
+   margin-bottom: 10px;
+   }
+   .card-position {
+   font-family: 'Roboto';
+   color: #FF6B08;
+   font-weight: 400;
+   font-size: 14px;
+   text-align: center;
+   }
+   .modal-img {
+      width: 100%;
+      height: 200px;
+      margin-bottom: 15px;
+   }
