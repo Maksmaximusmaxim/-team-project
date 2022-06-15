@@ -1,6 +1,6 @@
 .header {
   margin: 0 auto;
-  padding-top: 45px;
+  padding-top: 40px;
   padding-bottom: 92px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
     url(/src/images/mobheader-1x.jpg);
@@ -99,10 +99,9 @@
   margin-bottom: 54px;
   display: flex;
   justify-content: space-between;
-}
-.logo-wrap {
-  display: flex;
-  align-items: baseline;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
+  }
 }
 .list-refs {
   display: flex;
