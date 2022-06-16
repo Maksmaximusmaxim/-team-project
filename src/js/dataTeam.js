@@ -15,8 +15,8 @@ import andriiBerezhkoDtUrl from '../images/andrii-berezhko-1.jpg';
 import andriiBerezhkoPhUrl from '../images/andrii-berezhko-2.jpg';
 
 import andriiReznichenkoDtUrl from '../images/andrii-reznichenko-1.jpg';
-// import andriiReznichenkoUrl from '../images/reznichenkoandrii.jpg';
-// import andriiReznichenkoPhUrl from '../images/andrii-reznichenko-2.jpg';
+import andriiReznichenkoUrl from '../images/reznichenkoandrii.jpg';
+import andriiReznichenkoPhUrl from '../images/andrii-reznichenko-2.jpg';
 
 import oxanaDemovaUrl from '../images/oxana.jpg';
 import oxanaDemovaDtUrl from '../images/oxana-demova-1.jpg';
