@@ -3,17 +3,44 @@ import ApiService from './apiServices';
 let apiService = new ApiService();
 
   const gallery = document.querySelector('.cards');
+  const searchForm = document.querySelector('#search-form');
+  searchForm.addEventListener('submit',getArticlesByQuery);
+  function getArticlesByQuery(event){
+    event.preventDefault();
+    console.log(event)
+    apiService.searchQuery = event.target[0].value;
+    apiService
+  .getSearchArticles()
+  .then(data => {
+    
+    renderData(data);
+  })
+  .catch(err => {
+    console.log('error in function render');
+  });
+  }
+  
+function showError(message = ""){
+if (!message){
+  message = 'enter correct data'
+}
+}
+
+
 apiService
   .getGenreTrendMovies()
   .then(data => {
-    console.log(data);
+    
     renderData(data);
   })
   .catch(err => {
     console.log('error in function render');
   });
 
+
   function renderData (data){
+    
+    gallery.innerHTML = '';
     data.forEach(function(element){
         let genreStr = "";
     element.genres.forEach(function(genre){
@@ -30,6 +57,7 @@ apiService
       </li>`;
 
       gallery.insertAdjacentHTML("beforeend", item);
+      
     });
     
     
