@@ -104,7 +104,7 @@ export const modalDataTeam = [
    laptop: alexeyCkladanyukDtUrl,
    Phone: alexeyCkladanyukPhUrl,
    href: 'https://github.com/Skladaniuk',
-   nameEmp: 'Alexey Ckladanyuk',
+   nameEmp: 'Alexey Skladaniuk',
    position: 'Developer',
 },
 ];
