@@ -1,5 +1,5 @@
 import { modalDataTeam } from './dataTeam';
-import iconUrl from '../images/sprite.svg';
+import iconUrl from '/src/images/sprite.svg';
 
 // Основні змінні
 
