@@ -15,7 +15,9 @@ img {
 	padding-left: 15px;
 	padding-right: 15px;
 
-	max-width: 310px;
+	@media screen and (max-width:479px){
+		max-width: 310px;
+	}
 
 	@media screen and (min-width:480px){
 	width: 310px;
