@@ -30,7 +30,7 @@ teamCard.insertAdjacentHTML('afterbegin', cordEk);
 
 };
 
-// createCard();
+createCard();
 
 // Слухачі   
 
@@ -43,7 +43,7 @@ window.addEventListener('keydown', onEsc);
 
 
 function toggleModal() {
-   createCard();
+
    document.body.classList.toggle('show-modal');
 }
 
