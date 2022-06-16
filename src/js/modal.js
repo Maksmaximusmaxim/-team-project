@@ -1,32 +1,56 @@
+import { modalDataTeam } from './dataTeam';
+import iconUrl from '../images/sprite.svg';
 
 // Основні змінні
 
 const open = document.querySelector('[data-action="open-modal"]');
 const close = document.querySelector('[data-action="close-modal"]');
-const backdrop = document.querySelector('.js-backdrop');
+const backdrop = document.querySelector('.js-backdrop'),
+teamCard = document.querySelector('.card-conteiner');
+
+
+
+// рендер розмітки 
+
+const createCard = () => {
+   const cordEk = modalDataTeam.map(({url, href, nameEmp, position, laptop, Phone,}) => `
+   <li class="card">
+   <picture>
+   <source media="(max-width: 755px)" srcset="${Phone}">
+   <source media="(min-width: 756px)" srcset="${laptop}">
+<img class="modal-img" src="${url}" alt="${nameEmp}">
+</picture>
+   <a href="${href}" target="_blank"><svg class="card-icon">
+      <use href="${iconUrl}#github"></use></svg></a>
+   <p class="card-name">${nameEmp}</p>
+   <p class="card-position">${position}</p>
+</li>`).join('');
+
+teamCard.insertAdjacentHTML('afterbegin', cordEk); 
+
+};
+
+// createCard();
 
 // Слухачі   
 
-open.addEventListener('click', onOpen);
-close.addEventListener('click', onClose);
+open.addEventListener('click', toggleModal);
+close.addEventListener('click', toggleModal);
 backdrop.addEventListener('click', onBackdrop);
 window.addEventListener('keydown', onEsc);
 
-
 // Функція відкриття модалки
-function onOpen() {
-   document.body.classList.add('show-modal');
-}
 
-// Функція закриття модалки
-function onClose() {
-   document.body.classList.remove('show-modal');  
+
+function toggleModal() {
+   createCard();
+   document.body.classList.toggle('show-modal');
 }
 
 // Функція закриття модалки по кліку в Backdrop 
 function onBackdrop(e) {
    if(e.currentTarget === e.target) {
-      onClose(); 
+      toggleModal(); 
    }
 }
 
@@ -35,6 +59,6 @@ function onEsc(e) {
 const escKey = 'Escape',
 isEscKey = e.code === escKey;
 if(isEscKey) {
-onClose();   
+   toggleModal();   
 }
 }
