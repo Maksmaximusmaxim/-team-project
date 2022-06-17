@@ -9,7 +9,7 @@ export function makePagination() {
         page: 1,
         usageStatistics: false,
         template: {
-            page: `<a href="#" class="tui-page-btn">${this.page}</a>`,
+            page: '<a href="#" class="tui-page-btn">{{page}}</a>',
             currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
             moveButton:
                 '<a href="#" class="tui-page-btn tui-{{type}}">' +
@@ -25,22 +25,4 @@ export function makePagination() {
                 '</a>',
         },
     });
-
-
-    // pagination.on('beforeMove', async evt => {
-    //     const currentPage = (fetchTrending.page = evt.page);
-    //     const movies = await fetchTrending(currentPage).then(movie => {
-    //       const results = movie.results;
-    //       const standardizedResults = results.map(result => standardizeDataFromAPI(result));
-    //       const movieCard = standardizedResults.map(result => renderCardMovie(result));
-    //       refs.moviesContainerRef.innerHTML = '';
-    //       refs.moviesContainerRef.append(...movieCard);
-    //     });
-    //     window.scrollTo({ top: 0, behavior: 'smooth' });
-    //     Loading.hourglass('Loading...', {
-    //       svgColor: '#FF6B08',
-    //     });
-    //     Loading.remove(800);
-    //   });
-    // 
 }
