@@ -10,6 +10,7 @@ teamCard = document.querySelector('.card-conteiner');
 
 
 
+
 // рендер розмітки 
 
 const createCard = () => {
@@ -37,8 +38,6 @@ createCard();
 open.addEventListener('click', toggleModal);
 close.addEventListener('click', toggleModal);
 backdrop.addEventListener('click', onBackdrop);
-window.addEventListener('keydown', onEsc);
-
 
 // Функція відкриття модалки
 
