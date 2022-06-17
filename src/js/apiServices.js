@@ -14,6 +14,15 @@ export default class ApiService {
       });
   }
 
+  fetchSearchArticles() {
+    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(({ results }) => {
+        return results;
+      });
+  }
+
 
   fetchGenres() {
     const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US&page=${this.page}`;
@@ -25,8 +34,20 @@ export default class ApiService {
       });
   }
 
+  
+
   getGenreTrendMovies() {
-    return this.fetchTrendMovies().then(data => {
+    return this.fetchTrendMovies().then(data =>{return this.formatGenreDate(data)});
+  }
+
+  getSearchArticles() {
+    return this.fetchSearchArticles().then(data =>{return this.formatGenreDate(data)});
+  }
+
+
+
+  formatGenreDate(data){
+    
       return this.fetchGenres().then(genresList => {
         return data.map(movie => ({
           ...movie,
@@ -36,6 +57,6 @@ export default class ApiService {
             .flat(),
         }));
       });
-    });
   }
+
 }
