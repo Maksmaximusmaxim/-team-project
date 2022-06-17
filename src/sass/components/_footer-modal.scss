@@ -8,6 +8,11 @@ body.show-modal .modal {
    transform: scale(1);
 }
 
+// .is-hidden {
+//    opacity: 0;
+//    pointer-events: none;  
+// }
+
 .backdrop {
    display: flex;
    justify-content: center;
@@ -20,6 +25,7 @@ body.show-modal .modal {
    background-color: rgba(0, 0, 0, 0.3);
    z-index: 999;
 
+   overflow: auto;
    pointer-events: none;
    opacity: 0;
    visibility: hidden;
@@ -36,12 +42,18 @@ body.show-modal .modal {
    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
    0px 2px 1px -1px rgba(0, 0, 0, 0.12);
 
-   
+  
    overflow: auto;
    transform: scale(1.1);
    transition: transform 250ms ease-in-out;
    scroll-behavior: smooth;
 }
+
+// .is-hidden {
+//    opacity: 0;
+//    display: none;
+//    pointer-events: none;  
+// }
 
 
 .close-modal {
@@ -73,17 +85,17 @@ body.show-modal .modal {
    flex-wrap: wrap;
    justify-content: center;
    margin-left: -20px;
-   margin-bottom: -20px;
+   margin-bottom: -40px;
    margin-top: 20px;   
    }
    
    .card {
       display: block;
       position: relative;
-      // flex-basis: calc((100% - 60px) / 3);
-      margin-left: 20px;
+      
+      margin-left: 40px;
       margin-bottom: 20px;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
       background-color: #F7F7F7;
       width: 200px;
       border-radius: 27% 5% 5% 5%;
@@ -143,7 +155,7 @@ body.show-modal .modal {
    font-weight: 400;
    font-size: 14px;
    text-align: center;
-   padding-bottom: 10px;
+  
 
    @media screen and (max-width: 755px) { 
       font-weight: 700;

@@ -29,6 +29,8 @@
 }
 
 .movie_card {
+  cursor: pointer;
+  
   @media screen and (min-width: 768px) {
     margin-left: 32px;
     margin-bottom: 32px;
@@ -39,7 +41,15 @@
     margin-left: 16px;
   }
 }
+.movie_card {
+  transition: all .2s ease-in-out;
+}
 
+.movie_card:hover {
+  transform: scale(1.1);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 4px;
+}
 
 .list__img {
   width: 280px;

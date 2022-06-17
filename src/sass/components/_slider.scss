@@ -4,9 +4,9 @@
     padding-bottom: 20px;
     font-size: 13px;
 
-    @media screen and (max-width: 767px) {
-        display: none;
-    }
+    // @media screen and (max-width: 767px) {
+    //     display: none;
+    // }
 }
 .slider-title {
     padding-top: 5px;
@@ -37,6 +37,7 @@
    margin-right: 8px;
 }
 .slider-img{
+    cursor: pointer;
     display: block;
        width: 100%;
         height: auto;
