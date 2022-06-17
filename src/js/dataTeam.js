@@ -1,38 +1,40 @@
-import maximEremeevUrl from '../images/maksym.jpeg';
-import maximEremeevDtUrl from '../images/maxim-eremeiev-1.jpg';
-import maximEremeevPhUrl from '../images/maksim-eremeiiev-2.jpg';
+import maximEremeevUrl from '/src/images/maksym.jpeg';
+import maximEremeevDtUrl from '/src/images/maxim-eremeiev-1.jpg';
+import maximEremeevPhUrl from '/src/images/maksim-eremeiiev-2.jpg';
 
-import olyaZarichnaUrl from '../images/olya.jpeg';
-import olyaZarichnaDtUrl from '../images/olia-zarichna-1.jpg';
-import olyaZarichnaPhUrl from '../images/olia-zarichna-2.jpg';
+import olyaZarichnaUrl from '/src/images/olya.jpeg';
+import olyaZarichnaDtUrl from '/src/images/olia-zarichna-1.jpg';
+import olyaZarichnaPhUrl from '/src/images/olia-zarichna-2.jpg';
 
-import vitaliiPiddubchakUrl from '../images/vital.jpeg';
-import vitaliiPiddubchakDtUrl from '../images/vitalii-piddubchak-1.jpg';
-import vitaliiPiddubchakPhUrl from '../images/vitalii-piddubchak-2.jpg';
+import vitaliiPiddubchakUrl from '/src/images/vital.jpeg';
+import vitaliiPiddubchakDtUrl from '/src/images/vitalii-piddubchak-1.jpg';
+import vitaliiPiddubchakPhUrl from '/src/images/vitalii-piddubchak-2.jpg';
 
-import andriiBerezhkoUrl from '../images/andriiberezhko.jpeg';
-import andriiBerezhkoDtUrl from '../images/andrii-berezhko-1.jpg';
-import andriiBerezhkoPhUrl from '../images/andrii-berezhko-2.jpg';
+import andriiBerezhkoUrl from '/src/images/andriiberezhko.jpeg';
+import andriiBerezhkoDtUrl from '/src/images/andrii-berezhko-1.jpg';
+import andriiBerezhkoPhUrl from '/src/images/andrii-berezhko-2.jpg';
 
-import andriiReznichenkoUrl from '../images/reznichenkoandrii.jpg';
-import andriiReznichenkoDtUrl from '../images/andrii-reznichenko-1.jpg';
-import andriiReznichenkoPhUrl from '../images/andrii-reznichenko-2.jpg';
 
-import oxanaDemovaUrl from '../images/oxana.jpg';
-import oxanaDemovaDtUrl from '../images/oxana-demova-1.jpg';
-import oxanaDemovaPhUrl from '../images/oxana-demova-2.jpg';
+import andriiReznichenkoDtUrl from '/src/images/andrii-reznichenko-1.jpg';
+import andriiReznichenkoUrl from '/src/images/reznichenkoandrii.jpg';
+import andriiReznichenkoPhUrl from '/src/images/andrii-reznichenko-2.jpg';
 
-import volodymyrGanzelevskyiUrl from '../images/vladimir.jpeg';
-import volodymyrGanzelevskyiDtUrl from '../images/vladimir-zganz-1.jpg';
-import volodymyrGanzelevskyiPhUrl from '../images/vladimir-ganz-2.jpg';
 
-import maksymAfanasievUrl from '../images/maxsim.jpeg';
-import maksymAfanasievDtUrl from '../images/maksim-afanasiev.jpg';
-import maksymAfanasievPhUrl from '../images/maksim-afanasiev-2.jpg';
+import oxanaDemovaUrl from '/src/images/oxana.jpg';
+import oxanaDemovaDtUrl from '/src/images/oxana-demova-1.jpg';
+import oxanaDemovaPhUrl from '/src/images/oxana-demova-2.jpg';
 
-import alexeyCkladanyukUrl from '../images/olecsiy.jpeg';
-import alexeyCkladanyukDtUrl from '../images/alexey-skladaniuk-1.jpg';
-import alexeyCkladanyukPhUrl from '../images/olexiy-skladaniuk-2.jpg';
+import volodymyrGanzelevskyiUrl from '/src/images/vladimir.jpeg';
+import volodymyrGanzelevskyiDtUrl from '/src/images/vladimir-zganz-1.jpg';
+import volodymyrGanzelevskyiPhUrl from '/src/images/vladimir-ganz-2.jpg';
+
+import maksymAfanasievUrl from '/src/images/maxsim.jpeg';
+import maksymAfanasievDtUrl from '/src/images/maksim-afanasiev.jpg';
+import maksymAfanasievPhUrl from '/src/images/maksim-afanasiev-2.jpg';
+
+import alexeyCkladanyukUrl from '/src/images/olecsiy.jpeg';
+import alexeyCkladanyukDtUrl from '/src/images/alexey-skladaniuk-1.jpg';
+import alexeyCkladanyukPhUrl from '/src/images/olexiy-skladaniuk-2.jpg';
 
 export const modalDataTeam = [
 {
@@ -104,10 +106,10 @@ export const modalDataTeam = [
    laptop: alexeyCkladanyukDtUrl,
    Phone: alexeyCkladanyukPhUrl,
    href: 'https://github.com/Skladaniuk',
-   nameEmp: 'Alexey Ckladanyuk',
+   nameEmp: 'Alexey Skladaniuk',
    position: 'Developer',
 },
 ];
 
-
+// це коміт
 

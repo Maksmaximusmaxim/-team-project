@@ -1,5 +1,5 @@
 import { modalDataTeam } from './dataTeam';
-import iconUrl from '../images/sprite.svg';
+import iconUrl from '/src/images/sprite.svg';
 
 // Основні змінні
 
@@ -7,6 +7,7 @@ const open = document.querySelector('[data-action="open-modal"]');
 const close = document.querySelector('[data-action="close-modal"]');
 const backdrop = document.querySelector('.js-backdrop'),
 teamCard = document.querySelector('.card-conteiner');
+
 
 
 
@@ -37,13 +38,12 @@ createCard();
 open.addEventListener('click', toggleModal);
 close.addEventListener('click', toggleModal);
 backdrop.addEventListener('click', onBackdrop);
-window.addEventListener('keydown', onEsc);
 
 // Функція відкриття модалки
 
 
 function toggleModal() {
-
+   window.addEventListener('keydown', onEsc);
    document.body.classList.toggle('show-modal');
 }
 
@@ -59,6 +59,8 @@ function onEsc(e) {
 const escKey = 'Escape',
 isEscKey = e.code === escKey;
 if(isEscKey) {
-   toggleModal();   
+   toggleModal();
+   window.removeEventListener('keydown', onEsc); 
+   
 }
 }
