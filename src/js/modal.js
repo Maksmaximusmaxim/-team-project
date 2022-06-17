@@ -39,11 +39,12 @@ close.addEventListener('click', toggleModal);
 backdrop.addEventListener('click', onBackdrop);
 window.addEventListener('keydown', onEsc);
 
+
 // Функція відкриття модалки
 
 
 function toggleModal() {
-
+   window.addEventListener('keydown', onEsc);
    document.body.classList.toggle('show-modal');
 }
 
@@ -59,6 +60,8 @@ function onEsc(e) {
 const escKey = 'Escape',
 isEscKey = e.code === escKey;
 if(isEscKey) {
-   toggleModal();   
+   toggleModal();
+   window.removeEventListener('keydown', onEsc); 
+   
 }
 }
