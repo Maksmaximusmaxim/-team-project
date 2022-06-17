@@ -136,16 +136,19 @@
   }
 }
 .search {
-  padding: 0 25px 4px 0;
+  padding: 10px 25px 4px 4px;
   border-right: none;
   border-top: none;
   border-left: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   background-color: transparent;
   width: 100%;
+  transition: background-color 500ms;
 }
+.search:hover,
 .search:focus {
   outline: none;
+  background: rgba(255, 107, 8, 0.25);
 }
 .search::placeholder,
 .search {
@@ -161,7 +164,7 @@
 .icon-search {
   position: absolute;
   right: 0;
-  top: 4px;
+  top: 10px;
 }
 .list-btn {
   display: flex;
@@ -189,6 +192,7 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-transform: uppercase;
+  transition: background-color 500ms;
 }
 .btn:hover,
 .btn:focus {
