@@ -102,18 +102,29 @@ body.show-modal .modal {
       box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
       0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-      @media screen and (max-width: 1023px) { 
+      
+      @media screen and (max-width: 360px) { 
          justify-content: center;
-         width: 300px;
+         margin-left: 10px;
          }
          @media screen and (min-width: 755px) { 
-            width: 200px;
+            max-width: 200px;
             }
+            @media screen and (min-width: 800px) and (max-width: 1023px) {
+               max-width: 200px;  
+               }  
+            @media screen and (max-width: 1023px) { 
+               justify-content: center;
+               width: 300px;
+               }
+
             
             &:focus, &:hover {
                background-color: #dbd9d9;
                // cursor: pointer;
             }
+            
+               
    }
    .card-icon {
       position: absolute;
