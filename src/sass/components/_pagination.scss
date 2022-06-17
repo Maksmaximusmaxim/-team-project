@@ -1,0 +1,93 @@
+#pagination {
+  margin-bottom: 40px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+
+  color: #000000;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.333 !important;
+}
+
+.tui-pagination .tui-page-btn {
+  font-weight: 500 !important;
+  line-height: 1.333 !important;
+  border: none !important;
+  border-radius: 5px !important;
+  width: 38px !important;
+  height: 38px !important;
+  padding-top: 13px !important;
+  transition: 300ms;
+
+  @media screen and (min-width: 768px) {
+    width: 40px !important;
+    height: 40px !important;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
+}
+
+.tui-pagination .tui-page-btn.tui-is-selected {
+  color: #fff !important;
+  background: #ff6b08;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6b08 !important;
+  }
+}
+
+.tui-pagination .tui-page-btn.tui-first,
+.tui-pagination .tui-page-btn.tui-last {
+  display: inline-block;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  background: #f7f7f7;
+  margin-right: 5px !important;
+  margin-left: 5px !important;
+  padding-top: 14px !important;
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
+}
+
+.tui-pagination .tui-page-btn.tui-prev,
+.tui-pagination .tui-page-btn.tui-next {
+  display: inline-block;
+
+  background: #f7f7f7;
+  padding: 15px 15px !important;
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
+}
+
+.tui-pagination .tui-page-btn.tui-prev-is-ellip,
+.tui-pagination .tui-page-btn.tui-next-is-ellip {
+  display: none;
+  padding: 4px 12px !important;
+
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: #f7f7f7 !important;
+  }
+}
