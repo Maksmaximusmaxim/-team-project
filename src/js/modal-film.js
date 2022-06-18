@@ -1,35 +1,36 @@
-import ApiService from './apiServices'; 
-import * as basicLightbox from 'basiclightbox'; 
- 
-let apiService = new ApiService(); 
-const KEY = `f83ab619d56ba761ff69bc866a8288d9`; 
-let instance = ''; 
- 
-const a = document.querySelector('.cards'); 
- 
-a.addEventListener('click', onFilmClick); 
- 
-function onFilmClick(event) { 
-  if (event.target.nodeName !== 'IMG') { 
-    return; 
-  } 
-  const filmId = event.target.dataset?.id; 
-  if (filmId) { 
-    fetchFilm(filmId); 
-  } 
-} 
- 
-function fetchFilm(filmId) { 
-  fetch( 
-    `https://api.themoviedb.org/3/movie/${filmId}?api_key=${KEY}&language=en-US` 
-  ) 
-    .then(response => response.json()) 
-    .then(film => { 
-      let genreStr = ''; 
-      film.genres.forEach(function (genre) { 
-        genreStr += genre.name + ' '; 
-      }); 
- 
+import ApiService from './apiServices';
+import * as basicLightbox from 'basiclightbox';
+import LocalStorageAPI from './localStorageAPI';
+
+let apiService = new ApiService();
+const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
+let instance = '';
+
+const a = document.querySelector('.cards');
+
+a.addEventListener('click', onFilmClick);
+
+function onFilmClick(event) {
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  const filmId = event.target.dataset?.id;
+  if (filmId) {
+    fetchFilm(filmId);
+  }
+}
+
+function fetchFilm(filmId) {
+  fetch(
+    `https://api.themoviedb.org/3/movie/${filmId}?api_key=${KEY}&language=en-US`
+  )
+    .then(response => response.json())
+    .then(film => {
+      let genreStr = '';
+      film.genres.forEach(function (genre) {
+        genreStr += genre.name + ' ';
+      });
+
       instance = basicLightbox.create(`  
        <div class = "backdrop-modal "> 
           <div class="modal-card">  
@@ -57,10 +58,10 @@ function fetchFilm(filmId) {
       <div class = "modal-film__buttons"> 
           <ul class= "modal-film__list-button">  
               <li>  
-                  <button type="button" class = "btn_add__watched"> Add to watched</button>  
+                  <button type="button" class = "btn_add__watched">Add to watched</button>  
               </li>  
               <li>  
-                  <button type="button" class = "btn_add__queue"> Add to queue </button>  
+                  <button type="button" class = "btn_add__queue">Add to queue</button>  
               </li>  
           </ul>  
           <button class="modal-film__close" data action = "modal-close"> 
@@ -71,21 +72,74 @@ function fetchFilm(filmId) {
  </div> 
     </div>  
 </div> 
-    `); 
- 
-      instance.show(); 
- 
-      window.addEventListener('keydown', onEscKeyPress); 
-    }); 
-} 
- 
-function onCloseModal() { 
-  window.removeEventListener('keydown', onEscKeyPress); 
-  instance.close(); 
-} 
- 
-function onEscKeyPress(event) { 
-  if (event.code === 'Escape') { 
-    onCloseModal(); 
-  } 
+    `);
+
+      instance.show();
+
+      window.addEventListener('keydown', onEscKeyPress);
+
+      //Робота з кнопками
+
+      //Кнопки
+      const addToWatchedBtn = document.querySelector('.btn_add__watched');
+      const addToQueueBtn = document.querySelector('.btn_add__queue');
+
+      checkFilmStatus(film);
+
+      //Слухачі
+      addToWatchedBtn.addEventListener('click', onWatchedBtnClick);
+      addToQueueBtn.addEventListener('click', onQueueBtnClick);
+
+      //Функція перевірки присутності фільму у локальному сховищі
+      function checkFilmStatus(film) {
+        const idValue = film.id;
+        const watchedArr = LocalStorageAPI.getMovies('Watched');
+        const queueArr = LocalStorageAPI.getMovies('Queue');
+
+        if (watchedArr.includes(film.id)) {
+          addToWatchedBtn.textContent = 'Remove from Watched';
+        }
+
+        if (queueArr.includes(film.id)) {
+          addToQueueBtn.textContent = 'Remove from Queue';
+        }
+      }
+
+      function onWatchedBtnClick(e) {
+        const addContent = 'Add to watched';
+        const removeContent = 'Remove from Watched';
+
+        if (e.target.textContent === addContent) {
+          LocalStorageAPI.setMovie('Watched', film.id);
+          e.target.textContent = removeContent;
+        } else {
+          LocalStorageAPI.removeMovie('Watched', film.id);
+          e.target.textContent = addContent;
+        }
+      }
+
+      function onQueueBtnClick(e) {
+        const addContent = 'Add to queue';
+        const removeContent = 'Remove from Queue';
+
+        if (e.target.textContent === addContent) {
+          LocalStorageAPI.setMovie('Queue', film.id);
+          e.target.textContent = removeContent;
+        } else {
+          LocalStorageAPI.removeMovie('Queue', film.id);
+          e.target.textContent = addContent;
+        }
+      }
+    });
+}
+
+function onCloseModal() {
+  window.removeEventListener('keydown', onEscKeyPress);
+  instance.close();
+}
+
+function onEscKeyPress(event) {
+  if (event.code === 'Escape') {
+    onCloseModal();
+  }
 }
