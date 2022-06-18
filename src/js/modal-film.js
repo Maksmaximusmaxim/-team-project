@@ -116,6 +116,15 @@ function fetchFilm(filmId) {
           LocalStorageAPI.removeMovie('Watched', film.id);
           e.target.textContent = addContent;
         }
+
+        //КОСТИЛЬ - якщо фільм видаляється з бібліотеки, коли користувач знаходиться у бібліотеці -
+        // для нвого рендеру відбувається послідовне перемикання між двома бібліотеками
+        if (
+          document.querySelector('.refs-library').classList.contains('active')
+        ) {
+          document.querySelector('#queueLibr').click();
+          document.querySelector('#watchedLibr').click();
+        }
       }
 
       function onQueueBtnClick(e) {
@@ -128,6 +137,14 @@ function fetchFilm(filmId) {
         } else {
           LocalStorageAPI.removeMovie('Queue', film.id);
           e.target.textContent = addContent;
+        }
+
+        //КОСТИЛЬ (див. вище)
+        if (
+          document.querySelector('.refs-library').classList.contains('active')
+        ) {
+          document.querySelector('#watchedLibr').click();
+          document.querySelector('#queueLibr').click();
         }
       }
     });
