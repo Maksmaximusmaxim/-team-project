@@ -4,10 +4,9 @@ import 'tui-pagination/dist/tui-pagination.css';
 import './apiServices';
 import ApiService from './apiServices';
 const apiService = new ApiService();
-console.log(apiService);
+// console.log(apiService);
 
 
-export function makePagination() {
     const pagination = new Pagination('pagination', {
   totalItems: 5000,
   itemsPerPage: 1,
@@ -33,4 +32,17 @@ export function makePagination() {
       '</a>'
   }
     });
-}
+
+ pagination.on('afterMove', e => {
+            const { page } = e;
+            apiService.page = page;
+            const dataMoviesPopular = apiService.fetchTrendMovies(); // данные из API по запросу "популярные фильмы" (объект - { page: 1, results: (20) […], total_pages: 33054, total_results: 661074 })
+            const dataGenres = apiService.fetchGenres(); // массив объектов [{ id: 28, name: "Action" } ..... { id: 76, name: "Horor" }]
+           
+            // console.log(dataMoviesPop);
+            // console.log(dataGenresList);
+            // console.log(dataGenres);
+        
+       
+ });
+        

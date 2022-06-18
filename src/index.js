@@ -5,5 +5,3 @@ import './js/upBtn';
 import './js/slider';
 import './js/openTrailer';
 import './js/pagination';
-import { makePagination } from './js/pagination';
-makePagination();
