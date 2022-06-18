@@ -62,6 +62,7 @@ body.show-modal .modal {
    right: 8px;
    border-radius: 50%;
    width: 40px;
+   height: 40px;
    font-family: 'Roboto';
    font-weight: 200;
    text-align: center;
@@ -103,7 +104,7 @@ body.show-modal .modal {
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 
       0px 2px 1px -1px rgba(0, 0, 0, 0.12);
       
-      @media screen and (max-width: 360px) { 
+      @media screen and (max-width: 478px) { 
          justify-content: center;
          margin-left: 10px;
          }
@@ -137,8 +138,13 @@ body.show-modal .modal {
       &:focus, &:hover {
          fill: #FF6B08;
          cursor: pointer; 
-      } 
-      @media screen and (max-width: 755px) { 
+      }
+      @media screen and (max-width: 478px) { 
+      top: 310px;
+      width: 50px;
+      height: 50px;
+         }
+      @media screen and (min-width: 478px) and (max-width: 755px) { 
       top: 350px;
       right: 10px;
       width: 50px;
@@ -179,6 +185,9 @@ body.show-modal .modal {
       height: 200px;
       border-radius: 30% 5%;
       margin-bottom: 15px;
+      @media screen and (max-width: 478px) { 
+         max-height: 250px;
+         }
       @media screen and (max-width: 755px) { 
       height: 300px;
       
