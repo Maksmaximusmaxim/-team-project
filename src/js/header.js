@@ -1,5 +1,9 @@
 import LocalStorageAPI from './localStorageAPI';
+import Pagination  from 'tui-pagination';
+import './pagination';
+
 const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
+  
 
 const refs = {
   homeEl: document.querySelector('.header-refs'),

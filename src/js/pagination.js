@@ -1,7 +1,7 @@
 import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import './pagination'
+import './pagination';
 
 const options = {
   totalItems: 5000,
@@ -32,5 +32,6 @@ if (window.innerWidth < 767) {
     options.visiblePages = 4;
 }
 
-  const pagination = new Pagination('pagination', options);
+const pagination = new Pagination('pagination', options);
+console.dir(pagination);
 
