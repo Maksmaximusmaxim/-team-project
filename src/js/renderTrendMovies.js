@@ -1,7 +1,7 @@
 import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import './pagination'
+import './pagination';
 
 
 let apiService = new ApiService();
@@ -96,3 +96,4 @@ pagination.on('afterMove', e => {
   })
   
 });
+
