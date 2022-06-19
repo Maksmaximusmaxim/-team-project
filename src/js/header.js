@@ -1,10 +1,15 @@
+import LocalStorageAPI from './localStorageAPI';
+const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
+
 const refs = {
   homeEl: document.querySelector('.header-refs'),
   libraryEl: document.querySelector('.refs-library'),
   formEl: document.querySelector('.search-form'),
   headerEl: document.querySelector('header'),
 };
-import LocalStorageAPI from './localStorageAPI';
+
+const galleryEl = document.querySelector('.cards');
+
 refs.libraryEl.addEventListener('click', onLibraryClick);
 
 function onLibraryClick(event) {
@@ -24,8 +29,37 @@ function changeMarkup() {
   const watchedLibrEl = document.querySelector('#watchedLibr');
   const queueLibrEl = document.querySelector('#queueLibr');
 
-  watchedLibrEl.addEventListener('click', onWatchedBtnClick);
-  queueLibrEl.addEventListener('click', onQueueBtnClick);
+  watchedLibrEl.addEventListener('click', async () => {
+    const librKey = 'Watched';
+    const watchedMoviesIds = LocalStorageAPI.getMovies(librKey); //отримуємо масив ІД
+
+    galleryEl.innerHTML = '';
+
+    if (watchedMoviesIds.length === 0) {
+      galleryEl.innerHTML =
+        'Sorry, there are no movies in your WATCHED collection';
+      return;
+    } else {
+      const films = await fetchFilms(watchedMoviesIds); // отримуємо масив об'єктів фільмів по ІД
+      renderData(films); // рендеримо розмітку
+    }
+  });
+
+  queueLibrEl.addEventListener('click', async () => {
+    const librKey = 'Queue';
+    const queueMoviesIds = LocalStorageAPI.getMovies(librKey);
+
+    galleryEl.innerHTML = '';
+
+    if (queueMoviesIds.length === 0) {
+      galleryEl.innerHTML =
+        'Sorry, there are no movies in your QUEUE collection';
+      return;
+    } else {
+      const films = await fetchFilms(queueMoviesIds); // отримуємо масив об'єктів фільмів по ІД
+      renderData(films); // рендеримо розмітку
+    }
+  });
 
   watchedLibrEl.focus();
   watchedLibrEl.click();
@@ -35,36 +69,16 @@ function changeBackgroundImg() {
   refs.headerEl.classList.add('header-library');
 }
 
-const galleryEl = document.querySelector('.cards');
+async function fetchFilms(ids) {
+  const arrayOfPromises = ids.map(async filmId => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${filmId}?api_key=${KEY}&language=en-US`
+    );
+    return response.json();
+  });
 
-function onWatchedBtnClick() {
-  const librKey = 'Watched';
-
-  const watchedMovies = LocalStorageAPI.getMovies(librKey);
-
-  galleryEl.innerHTML = '';
-
-  if (watchedMovies.length === 0) {
-    galleryEl.innerHTML =
-      'Sorry, there are no movies in your WATCHED collection';
-  } else {
-    renderData(watchedMovies);
-  }
-}
-
-function onQueueBtnClick() {
-  const librKey = 'Queue';
-
-  const queueMovies = LocalStorageAPI.getMovies(librKey);
-  const galleryEl = document.querySelector('.cards');
-
-  galleryEl.innerHTML = '';
-
-  if (queueMovies.length === 0) {
-    galleryEl.innerHTML = 'Sorry, there are no movies in your QUEUE collection';
-  } else {
-    renderData(queueMovies);
-  }
+  const films = await Promise.all(arrayOfPromises);
+  return films;
 }
 
 function renderData(data) {
@@ -75,7 +89,7 @@ function renderData(data) {
     });
 
     let item = `<li class="movie_card">
-      <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="${element.title}" loading="lazy" class='list__img' />
+      <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="${element.title}" loading="lazy" class='list__img' data-id = '${element.id}'/>
       
       <p class="info_title">${element.original_title}
         <span class="info_genre">${genreStr} | ${element.release_date}</span> 
