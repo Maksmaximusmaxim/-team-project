@@ -1,48 +1,98 @@
+import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-
-import './apiServices';
-import ApiService from './apiServices';
-const apiService = new ApiService();
-// console.log(apiService);
+import './pagination'
 
 
-    const pagination = new Pagination('pagination', {
-  totalItems: 5000,
-  itemsPerPage: 1,
-  visiblePages: 7,
-  page: 1,
-  centerAlign: false,
-  firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-  template: {
-    page: '<a href="#" class="tui-page-btn">{{page}}</a>',
-    currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
-    moveButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}">' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</a>',
-    disabledMoveButton:
-      '<span class="tui-page-btn tui-is-disabled tui-{{type}}" >' +
-      '<span class="tui-ico-{{type}}">{{type}}</span>' +
-      '</span>',
-    moreButton:
-      '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip">' +
-      '<span class="tui-ico-ellip">...</span>' +
-      '</a>'
+let apiService = new ApiService();
+
+  const gallery = document.querySelector('.cards');
+const searchForm = document.querySelector('#search-form');
+  searchForm.addEventListener('submit',getArticlesByQuery);
+  function getArticlesByQuery(event){
+    event.preventDefault();
+    console.log(event)
+    apiService.searchQuery = event.target[0].value;
+    apiService
+  .getSearchArticles()
+  .then(data => {
+    
+    renderData(data);
+  })
+  .catch(err => {
+    console.log('error in function render');
+  });
   }
-    });
+  
+function showError(message = ""){
+if (!message){
+  message = 'enter correct data'
+}
+}
 
- pagination.on('afterMove', e => {
-            const { page } = e;
-            apiService.page = page;
-            const dataMoviesPopular = apiService.fetchTrendMovies(); // данные из API по запросу "популярные фильмы" (объект - { page: 1, results: (20) […], total_pages: 33054, total_results: 661074 })
-            const dataGenres = apiService.fetchGenres(); // массив объектов [{ id: 28, name: "Action" } ..... { id: 76, name: "Horor" }]
-           
-            // console.log(dataMoviesPop);
-            // console.log(dataGenresList);
-            // console.log(dataGenres);
+
+apiService
+  .getGenreTrendMovies()
+  .then(data => {
+    
+    renderData(data);
+  })
+  .catch(err => {
+    console.log('error in function render');
+  });
+
+
+  function renderData (data){
+    
+    gallery.innerHTML = '';
+    data.forEach(function(element){
+        let genreStr = "";
+    element.genres.forEach(function(genre){
+        genreStr += genre.name+' ';
+    });
         
-       
- });
+      let item =`<li class="movie_card">
+        <img src="https://image.tmdb.org/t/p/original${element.poster_path}" alt="${element.title}" loading="lazy" data-id = ${element.id} class="list__img"/>
         
+        <p class="info_title">${element.original_title}
+          <span class="info_genre">${genreStr} | ${element.release_date}</span> 
+          </p> 
+        
+      </li>`;
+
+      gallery.insertAdjacentHTML("beforeend", item);
+      
+    });
+    
+    
+}
+
+
+const options = {
+    totalItems: 5000,
+    itemsPerPage: 20,
+       visiblePages: 7,
+        centerAlign: false,
+    page: 1,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+};
+if (window.innerWidth < 767) {
+    options.visiblePages = 4;
+};
+
+const pagination = new Pagination('pagination', options);
+pagination.on('afterMove', e => {
+  gallery.innerHTML = '';
+  const { page } = e;
+  apiService.page = page;
+  apiService
+  .getGenreTrendMovies()
+    .then(data => {
+    
+      renderData(data)
+    }).catch(err => {
+    console.log('error in function render');
+  })
+  
+});

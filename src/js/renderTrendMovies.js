@@ -1,9 +1,13 @@
 import ApiService from './apiServices';
+import Pagination from 'tui-pagination';
+import 'tui-pagination/dist/tui-pagination.css';
+import './pagination'
+
 
 let apiService = new ApiService();
 
   const gallery = document.querySelector('.cards');
-  const searchForm = document.querySelector('#search-form');
+const searchForm = document.querySelector('#search-form');
   searchForm.addEventListener('submit',getArticlesByQuery);
   function getArticlesByQuery(event){
     event.preventDefault();
@@ -63,3 +67,32 @@ apiService
     
 }
 
+
+const options = {
+    totalItems: 5000,
+    itemsPerPage: 20,
+       visiblePages: 7,
+        centerAlign: false,
+    page: 1,
+    firstItemClassName: 'tui-first-child',
+    lastItemClassName: 'tui-last-child',
+};
+if (window.innerWidth < 767) {
+    options.visiblePages = 4;
+};
+
+const pagination = new Pagination('pagination', options);
+pagination.on('afterMove', e => {
+  gallery.innerHTML = '';
+  const { page } = e;
+  apiService.page = page;
+  apiService
+  .getGenreTrendMovies()
+    .then(data => {
+    
+      renderData(data)
+    }).catch(err => {
+    console.log('error in function render');
+  })
+  
+});
