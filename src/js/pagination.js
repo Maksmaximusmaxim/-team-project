@@ -1,14 +1,9 @@
+import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
+import './pagination'
 
-import './apiServices';
-import ApiService from './apiServices';
-const apiService = new ApiService();
-console.log(apiService);
-
-
-export function makePagination() {
-    const pagination = new Pagination('pagination', {
+const options = {
   totalItems: 5000,
   itemsPerPage: 1,
   visiblePages: 7,
@@ -32,5 +27,10 @@ export function makePagination() {
       '<span class="tui-ico-ellip">...</span>' +
       '</a>'
   }
-    });
+};
+if (window.innerWidth < 767) {
+    options.visiblePages = 4;
 }
+
+  const pagination = new Pagination('pagination', options);
+
