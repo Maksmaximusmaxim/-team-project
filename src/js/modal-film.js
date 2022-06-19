@@ -98,10 +98,12 @@ function fetchFilm(filmId) {
 
         if (watchedArr.includes(film.id)) {
           addToWatchedBtn.textContent = 'Remove from Watched';
+          addToQueueBtn.disabled = true;
         }
 
         if (queueArr.includes(film.id)) {
           addToQueueBtn.textContent = 'Remove from Queue';
+          addToWatchedBtn.disabled = true;
         }
       }
 
@@ -112,17 +114,19 @@ function fetchFilm(filmId) {
         if (e.target.textContent === addContent) {
           LocalStorageAPI.setMovie('Watched', film.id);
           e.target.textContent = removeContent;
+          addToQueueBtn.disabled = true;
         } else {
           LocalStorageAPI.removeMovie('Watched', film.id);
           e.target.textContent = addContent;
+          addToQueueBtn.disabled = false;
         }
 
         //КОСТИЛЬ - якщо фільм видаляється з бібліотеки, коли користувач знаходиться у бібліотеці -
-        // для нвого рендеру відбувається послідовне перемикання між двома бібліотеками
+        // для нвого рендеру відбувається примусовий клік по кнопці вілповідної бібліотеки
         if (
           document.querySelector('.refs-library').classList.contains('active')
         ) {
-          document.querySelector('#queueLibr').click();
+          a.innerHTML = '';
           document.querySelector('#watchedLibr').click();
         }
       }
@@ -134,16 +138,18 @@ function fetchFilm(filmId) {
         if (e.target.textContent === addContent) {
           LocalStorageAPI.setMovie('Queue', film.id);
           e.target.textContent = removeContent;
+          addToWatchedBtn.disabled = true;
         } else {
           LocalStorageAPI.removeMovie('Queue', film.id);
           e.target.textContent = addContent;
+          addToWatchedBtn.disabled = false;
         }
 
         //КОСТИЛЬ (див. вище)
         if (
           document.querySelector('.refs-library').classList.contains('active')
         ) {
-          document.querySelector('#watchedLibr').click();
+          a.innerHTML = '';
           document.querySelector('#queueLibr').click();
         }
       }
