@@ -233,19 +233,22 @@
   position: absolute;
   top: 0;
   right: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   margin-right: 16px;
   margin-top: 16px;
   border-radius: 50%;
   border-color: black;
   border: none;
-
+  width: 25px;
+  height: 25px;
   background-color: #fff;
-  background-image: url('../images/cross_icon.svg');
-  background-position: center;
-  background-size: 60%;
-  background-repeat: no-repeat;
+
 }
 .modal-film__close:hover,
 .modal-film__close:focus {
   cursor: pointer;
+  color: #ffffff;
+  background-color:#ff6b01;
 }
