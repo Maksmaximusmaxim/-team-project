@@ -99,6 +99,7 @@
   margin-bottom: 54px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   @media screen and (min-width: 768px) {
     margin-bottom: 40px;
   }
@@ -149,6 +150,7 @@
 .search:focus {
   outline: none;
   background: rgba(255, 107, 8, 0.25);
+  border-radius: 8px;
 }
 .search::placeholder,
 .search {
@@ -163,7 +165,7 @@
 }
 .icon-search {
   position: absolute;
-  right: 0;
+  right: 4px;
   top: 10px;
 }
 .list-btn {
