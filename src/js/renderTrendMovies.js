@@ -1,7 +1,7 @@
 import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import './pagination'
+import './pagination';
 
 
 let apiService = new ApiService();
@@ -43,7 +43,7 @@ apiService
 
 
   function renderData (data){
-    
+
     gallery.innerHTML = '';
     data.forEach(function(element){
         let genreStr = "";
@@ -77,7 +77,7 @@ const options = {
     firstItemClassName: 'tui-first-child',
     lastItemClassName: 'tui-last-child',
 };
-if (window.innerWidth < 767) {
+if (window.innerWidth < 768) {
     options.visiblePages = 4;
 };
 
@@ -93,6 +93,7 @@ pagination.on('afterMove', e => {
       renderData(data)
     }).catch(err => {
     console.log('error in function render');
-  })
+    })
   
 });
+
