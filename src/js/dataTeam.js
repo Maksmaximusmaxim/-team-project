@@ -15,7 +15,7 @@ import andriiBerezhkoDtUrl from '/src/images/andrii-berezhko-1.jpg';
 import andriiBerezhkoPhUrl from '/src/images/andrii-berezhko-2.jpg';
 
 
-import andriiReznichenkoUrl from '../images/ReznichenkoAndrii.jpg';
+import andriiReznichenkoUrl from '../images/reznichenkoandrii.jpg';
 import andriiReznichenkoDtUrl from '../images/andrii-reznichenko-1.jpg';
 import andriiReznichenkoPhUrl from '/src/images/andrii-reznichenko-2.jpg';
 
