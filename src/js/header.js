@@ -44,6 +44,7 @@ function changeMarkup() {
         'Sorry, there are no movies in your WATCHED collection';
       return;
     } else {
+       document.querySelector('#pagination').classList.add('visually-hidden');
       const films = await fetchFilms(watchedMoviesIds); // отримуємо масив об'єктів фільмів по ІД
       renderData(films); // рендеримо розмітку
     }
@@ -61,6 +62,7 @@ function changeMarkup() {
         'Sorry, there are no movies in your QUEUE collection';
       return;
     } else {
+       document.querySelector('#pagination').classList.add('visually-hidden');
       const films = await fetchFilms(queueMoviesIds); // отримуємо масив об'єктів фільмів по ІД
       renderData(films); // рендеримо розмітку
     }
