@@ -7,7 +7,7 @@ import './pagination';
 let apiService = new ApiService();
 
   const gallery = document.querySelector('.cards');
-const searchForm = document.querySelector('#search-form');
+  const searchForm = document.querySelector('#search-form');
   searchForm.addEventListener('submit',getArticlesByQuery);
   function getArticlesByQuery(event){
     event.preventDefault();
@@ -21,6 +21,22 @@ const searchForm = document.querySelector('#search-form');
   })
   .catch(err => {
     console.log('error in function render');
+  });
+      
+  const myPagination = new Pagination('pagination', options);
+  
+  myPagination.on('beforeMove', async e => {
+   const { page } = e;
+  apiService.page = page;
+     apiService
+  .getSearchArticles()
+  .then(data => {
+    
+    renderData(data);
+  })
+  .catch(err => {
+    console.log('error in function render');
+  });
   });
   }
   
@@ -96,4 +112,5 @@ pagination.on('afterMove', e => {
     })
   
 });
+
 
