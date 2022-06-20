@@ -42,20 +42,16 @@ function fetchFilm(filmId) {
               <p class= "modal-film__votes modal-film__text"> Vote / Votes <span class="votes_average"> ${film.vote_average}</span>/<span class ="votes_count">${film.vote_count}</span> </p> 
               <p class= "modal-film__popularity modal-film__text">Popularity <span class="popularity"> ${film.popularity} </span></p> 
               <p class= "modal-film__original-title modal-film__text">Original Title <span class="original_title">${film.original_title} </span> </p> 
-                <div class = "genres"> 
-                  <p class = "modal-film__genres modal-film__text">Genre </p> 
-                  <p class="modal-film__genres-names"> 
-                    <span class = "modal-film__genres-item">${genreStr} </span> </p> 
-                </div> 
+              <p class = "modal-film__genres modal-film__text">Genre <span class = "modal-film__genres-item">${genreStr} </span> </p>
               <p class="modal-film__about"> ABOUT </p> 
               <p class="modal-film__description"> ${film.overview} </p> 
                 <div class = "modal-film__buttons">
                   <ul class= "modal-film__list-button"> 
                     <li> 
-                    <button type="button" class = "btn_add__watched"> Add to watched</button> 
+                    <button type="button" class = "btn_add__watched">Add to watched</button> 
                     </li> 
                     <li> 
-                    <button type="button" class = "btn_add__queue"> Add to queue </button> 
+                    <button type="button" class = "btn_add__queue">Add to queue</button> 
                     </li> 
                   </ul> 
                 </div>
@@ -93,11 +89,21 @@ function fetchFilm(filmId) {
         if (watchedArr.includes(film.id)) {
           addToWatchedBtn.textContent = 'Remove from Watched';
           addToQueueBtn.disabled = true;
+
+          addToQueueBtn.classList.add('btn_disabled');
+          // // Інлайн-стилі для дизактивації кнопки
+          // addToQueueBtn.style.backgroundColor = 'grey';
+          // addToQueueBtn.style.pointerEvents = 'none';
         }
 
         if (queueArr.includes(film.id)) {
           addToQueueBtn.textContent = 'Remove from Queue';
           addToWatchedBtn.disabled = true;
+
+          addToWatchedBtn.classList.add('btn_disabled');
+          // // Інлайн-стилі для дизактивації кнопки
+          // addToWatchedBtn.style.backgroundColor = 'grey';
+          // addToWatchedBtn.style.pointerEvents = 'none';
         }
       }
 
@@ -109,10 +115,20 @@ function fetchFilm(filmId) {
           LocalStorageAPI.setMovie('Watched', film.id);
           e.target.textContent = removeContent;
           addToQueueBtn.disabled = true;
+
+          addToQueueBtn.classList.add('btn_disabled');
+          // // Інлайн-стилі для дизактивації кнопки
+          // addToQueueBtn.style.backgroundColor = 'grey';
+          // addToQueueBtn.style.pointerEvents = 'none';
         } else {
           LocalStorageAPI.removeMovie('Watched', film.id);
           e.target.textContent = addContent;
           addToQueueBtn.disabled = false;
+
+          addToQueueBtn.classList.remove('btn_disabled');
+          // // Інлайн-стилі для активації кнопки
+          // addToQueueBtn.style.backgroundColor = '#ffffff';
+          // addToQueueBtn.style.pointerEvents = 'all';
         }
 
         //КОСТИЛЬ - якщо фільм видаляється з бібліотеки, коли користувач знаходиться у бібліотеці -
@@ -133,10 +149,20 @@ function fetchFilm(filmId) {
           LocalStorageAPI.setMovie('Queue', film.id);
           e.target.textContent = removeContent;
           addToWatchedBtn.disabled = true;
+
+          addToWatchedBtn.classList.add('btn_disabled');
+          // // Інлайн-стилі для дизактивації кнопки
+          // addToWatchedBtn.style.backgroundColor = 'grey';
+          // addToWatchedBtn.style.pointerEvents = 'none';
         } else {
           LocalStorageAPI.removeMovie('Queue', film.id);
           e.target.textContent = addContent;
           addToWatchedBtn.disabled = false;
+
+          addToWatchedBtn.classList.remove('btn_disabled');
+          // // Інлайн-стилі для активації кнопки
+          // addToWatchedBtn.style.backgroundColor = '#ffffff';
+          // addToWatchedBtn.style.pointerEvents = 'all';
         }
 
         //КОСТИЛЬ (див. вище)
