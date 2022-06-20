@@ -42,11 +42,7 @@ function fetchFilm(filmId) {
               <p class= "modal-film__votes modal-film__text"> Vote / Votes <span class="votes_average"> ${film.vote_average}</span>/<span class ="votes_count">${film.vote_count}</span> </p> 
               <p class= "modal-film__popularity modal-film__text">Popularity <span class="popularity"> ${film.popularity} </span></p> 
               <p class= "modal-film__original-title modal-film__text">Original Title <span class="original_title">${film.original_title} </span> </p> 
-                <div class = "genres"> 
-                  <p class = "modal-film__genres modal-film__text">Genre </p> 
-                  <p class="modal-film__genres-names"> 
-                    <span class = "modal-film__genres-item">${genreStr} </span> </p> 
-                </div> 
+              <p class = "modal-film__genres modal-film__text">Genre <span class = "modal-film__genres-item">${genreStr} </span> </p>
               <p class="modal-film__about"> ABOUT </p> 
               <p class="modal-film__description"> ${film.overview} </p> 
                 <div class = "modal-film__buttons">
