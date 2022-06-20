@@ -4,11 +4,20 @@ export default class ApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    this.total_results;
   }
   fetchTrendMovies() {
     const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&language=en-US&page=${this.page}`;
     return fetch(url)
       .then(response => response.json())
+      .then(data => {
+        data.total_results;
+        console.log(data.total_results);
+         const resultsData = JSON.stringify(data.total_results);
+        localStorage.setItem('totalPages-current-data', resultsData);
+        console.log(resultsData);
+        return data
+      })
       .then(({ results }) => {
         return results;
       });
@@ -18,9 +27,17 @@ export default class ApiService {
     const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
     return fetch(url)
       .then(response => response.json())
+      .then(data => {
+        data.total_results;
+        console.log(data.total_results);
+          const resultsData = JSON.stringify(data.total_results);
+        localStorage.setItem('totalPages-current-data', resultsData);
+        return data
+      })
       .then(({ results }) => {
         return results;
       });
+  
   }
 
 
@@ -29,6 +46,11 @@ export default class ApiService {
     console.log(url);
     return fetch(url)
       .then(response => response.json())
+      .then(data => {
+        data.total_results;
+        console.log(data.total_results);
+        return data
+      })
       .then( results  => {
         return results.genres;
       });

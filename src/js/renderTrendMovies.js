@@ -2,20 +2,29 @@ import ApiService from './apiServices';
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import './pagination';
+import Notiflix from 'notiflix';
 
 
 let apiService = new ApiService();
 
   const gallery = document.querySelector('.cards');
   const searchForm = document.querySelector('#search-form');
-  searchForm.addEventListener('submit',getArticlesByQuery);
+searchForm.addEventListener('submit', getArticlesByQuery);
+  
+
   function getArticlesByQuery(event){
     event.preventDefault();
     console.log(event)
     apiService.searchQuery = event.target[0].value;
     apiService
   .getSearchArticles()
-  .then(data => {
+      .then(data => {
+        if (data.length === 0) {
+          Notiflix.Notify.failure('Sorry, there are no movies matching your search query.')
+          gallery.innerHTML = "";
+           document.querySelector('#pagination').classList.add('visually-hidden')
+            return;
+    }
     
     renderData(data);
   })
@@ -24,7 +33,7 @@ let apiService = new ApiService();
   });
       
   const myPagination = new Pagination('pagination', options);
-  
+  options.totalItems = Number(JSON.parse(localStorage.getItem('totalPages-current-data')));
   myPagination.on('beforeMove', async e => {
    const { page } = e;
   apiService.page = page;
@@ -85,21 +94,23 @@ apiService
 
 
 const options = {
-    totalItems: 5000,
+  totalItems: 1000,
     itemsPerPage: 20,
        visiblePages: 7,
         centerAlign: false,
     page: 1,
     firstItemClassName: 'tui-first-child',
-    lastItemClassName: 'tui-last-child',
+  lastItemClassName: 'tui-last-child',
 };
 if (window.innerWidth < 768) {
     options.visiblePages = 4;
 };
+options.totalItems = localStorage.getItem('totalPages-current-data');
 
 const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', e => {
   gallery.innerHTML = '';
+ 
   const { page } = e;
   apiService.page = page;
   apiService
@@ -110,7 +121,7 @@ pagination.on('afterMove', e => {
     }).catch(err => {
     console.log('error in function render');
     })
-  
+  localStorage.removeItem('totalPages-current-data');
 });
 
 
