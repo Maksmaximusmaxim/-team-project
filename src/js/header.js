@@ -33,6 +33,9 @@ function changeMarkup() {
   const queueLibrEl = document.querySelector('#queueLibr');
 
   watchedLibrEl.addEventListener('click', async () => {
+    queueLibrEl.classList.remove('btn_isActive');
+    watchedLibrEl.classList.add('btn_isActive');
+
     const librKey = 'Watched';
     const watchedMoviesIds = LocalStorageAPI.getMovies(librKey); //отримуємо масив ІД
 
@@ -51,6 +54,9 @@ function changeMarkup() {
   });
 
   queueLibrEl.addEventListener('click', async () => {
+    watchedLibrEl.classList.remove('btn_isActive');
+    queueLibrEl.classList.add('btn_isActive');
+
     const librKey = 'Queue';
     const queueMoviesIds = LocalStorageAPI.getMovies(librKey);
 
@@ -70,6 +76,7 @@ function changeMarkup() {
 
   watchedLibrEl.focus();
   watchedLibrEl.click();
+  watchedLibrEl.classList.add('btn_isActive');
 }
 
 function changeBackgroundImg() {
