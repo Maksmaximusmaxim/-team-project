@@ -39,7 +39,7 @@ function changeMarkup() {
     galleryEl.innerHTML = '';
 
     if (watchedMoviesIds.length === 0) {
-      document.querySelector('#pagination').classList.add('visually-hidden');
+       document.querySelector('#pagination').classList.add('visually-hidden');
       galleryEl.innerHTML =
         'Sorry, there are no movies in your WATCHED collection';
       return;
@@ -56,7 +56,7 @@ function changeMarkup() {
     galleryEl.innerHTML = '';
 
     if (queueMoviesIds.length === 0) {
-      document.querySelector('#pagination').classList.add('visually-hidden');
+       document.querySelector('#pagination').classList.add('visually-hidden');
       galleryEl.innerHTML =
         'Sorry, there are no movies in your QUEUE collection';
       return;
