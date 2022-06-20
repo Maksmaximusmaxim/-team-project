@@ -1,33 +1,30 @@
 import 'basiclightbox/src/styles/main.scss';
 import * as basicLightbox from 'basiclightbox';
 import spiner from './spiner';
+import ApiService from './apiServices';
 
-
-const BASE_URL = 'https://api.themoviedb.org/3/movie';
-const API_KEY = 'f83ab619d56ba761ff69bc866a8288d9';
+const apiService = new ApiService;
 
 const slide = document.querySelector('.slider-container');
-
+let trailer;
 slide.addEventListener('click', onSlideClick);
 
 function onSlideClick(e) {
     e.preventDefault();
-    const id = e.target.dataset.id;   
-    const url = `${BASE_URL}/${id}/videos?api_key=${API_KEY}&language=en-US`
+    const id = e.target.dataset.id;    
     spiner.spiner.show();
-    fetch(url)
-        .then(response => response.json())        
-        .then((r) => {            
-            const key = r.results[0].key;            
-            const trailer = basicLightbox.create(`
-                 <iframe width="560" height="315" src='https://www.youtube.com/embed/${key}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-            trailer.show();
-            closeBtnTrailer(trailer);
-            spiner.spiner.close();
+    apiService.fetchMovieById(id)
+    .then((r) => {            
+        const key = r.results[0].key;            
+        trailer = basicLightbox.create(`
+            <iframe width="560" height="315" src='https://www.youtube.com/embed/${key}'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+        trailer.show();
+        closeBtnTrailer(trailer);
+      spiner.spiner.close();
+      window.addEventListener('keydown', onEscKeyPress);
       });
 };
-
-function closeBtnTrailer(trailer) {
+ function closeBtnTrailer(trailer) {
     const modalBox = document.querySelector('.basicLightbox--iframe');
     modalBox.insertAdjacentHTML(
       'afterbegin',
@@ -42,6 +39,10 @@ function closeBtnTrailer(trailer) {
       '[data-action="close-lightbox"]',
     );
     modalCloseBtn.addEventListener('click', () => trailer.close());
+}
+  
+function onEscKeyPress(event) {  
+  if (event.code === 'Escape') {
+    trailer.close();    
   }
-    
-
+}
