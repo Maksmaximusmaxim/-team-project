@@ -60,9 +60,7 @@ function fetchFilm(filmId) {
                   </ul> 
                 </div>
           <button class="modal-film__close" data-action="close-modal">
-            <svg width="14" height="14">
-              <use href="./images/symbol-defs.svg#icon-cross_icon"></use>
-            </svg>
+          &#10005
           </button>
       </div> 
     </div>
