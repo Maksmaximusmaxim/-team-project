@@ -28,8 +28,8 @@ const options = {
       '</a>'
   }
 };
-if (window.innerWidth < 767) {
-    options.visiblePages = 4;
+if (window.innerWidth < 768) {
+  options.visiblePages = 4;
 }
 
 const pagination = new Pagination('pagination', options);
