@@ -23,10 +23,18 @@ export default class ApiService {
       });
   }
 
+  fetchMovieById(id) {   
+    const url = `${BASE_URL}/movie/${id}/videos?api_key=${KEY}&language=en-US`;
+    return fetch(url)
+      .then(response => {     
+        return response.json();
+      });
+      
+  }
+
 
   fetchGenres() {
-    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US&page=${this.page}`;
-    console.log(url);
+    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US&page=${this.page}`;    
     return fetch(url)
       .then(response => response.json())
       .then( results  => {
