@@ -183,6 +183,11 @@
   list-style: none;
 }
 
+.btn_disabled {
+  background-color: grey;
+  pointer-events: none;
+}
+
 @media screen and (min-width: 768px) {
   .modal-card {
     background-color: #ffffff;
