@@ -80,7 +80,7 @@
 
 .logo-icon {
   stroke: #818181;
-  transition: stroke 500ms;
+  transition: stroke 500ms ease-in-out;
 }
 .logo-title {
   display: flex;
@@ -98,7 +98,7 @@
 .title {
   display: none;
   margin-left: 8px;
-  transition: color 500ms;
+  transition: color 500ms ease-in-out;
   @media screen and (min-width: 768px) {
     font-weight: 500;
     display: flex;
@@ -127,7 +127,7 @@
   margin-right: 40px;
 }
 .header-refs {
-  transition: color 500ms;
+  transition: color 500ms ease-in-out;
 }
 .header-refs:hover,
 .header-refs:focus {
@@ -167,7 +167,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   background-color: transparent;
   width: 100%;
-  transition: background-color 500ms;
+  transition: background-color 500ms ease-in-out;
 }
 .search:hover,
 .search:focus {
@@ -217,7 +217,7 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-transform: uppercase;
-  transition: background-color 500ms;
+  transition: background-color 500ms ease-in-out;
 }
 .btn:hover,
 .btn:focus {
