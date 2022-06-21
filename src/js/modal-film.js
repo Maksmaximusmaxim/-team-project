@@ -32,33 +32,35 @@ function fetchFilm(filmId) {
       });
 
       instance = basicLightbox.create(`  
-      <div class = "backdrop-modal ">
-          <div class="modal-card"> 
-            <div class="modal-film__img"> 
-              <img class = "image" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}"> 
-            </div> 
-            <div class="modal-film__info"> 
-              <h2 class="modal-film__title">${film.original_title}</h2> 
-              <p class= "modal-film__votes modal-film__text"> Vote / Votes <span class="votes_average"> ${film.vote_average}</span>/<span class ="votes_count">${film.vote_count}</span> </p> 
-              <p class= "modal-film__popularity modal-film__text">Popularity <span class="popularity"> ${film.popularity} </span></p> 
-              <p class= "modal-film__original-title modal-film__text">Original Title <span class="original_title">${film.original_title} </span> </p> 
-              <p class = "modal-film__genres modal-film__text">Genre <span class = "modal-film__genres-item">${genreStr} </span> </p>
-              <p class="modal-film__about"> ABOUT </p> 
-              <p class="modal-film__description"> ${film.overview} </p> 
-                <div class = "modal-film__buttons">
-                  <ul class= "modal-film__list-button"> 
-                    <li> 
-                    <button type="button" class = "btn_add__watched">Add to watched</button> 
-                    </li> 
-                    <li> 
-                    <button type="button" class = "btn_add__queue">Add to queue</button> 
-                    </li> 
-                  </ul> 
-                </div>
-          <button class="modal-film__close" data-action="close-modal">
-          &#10005
-          </button>
-      </div> 
+      <div class = "backdrop-modal "> 
+          <div class="modal-card">  
+            <div class="modal-film__img">  
+              <img class = "image" src="https://image.tmdb.org/t/p/original${film.poster_path}" alt="${film.title}">  
+            </div>  
+            <div class="modal-film__info">  
+              <h2 class="modal-film__title">${film.original_title}</h2>  
+              <p class= "modal-film__votes modal-film__text"> Vote / Votes <span class="votes_average"> ${film.vote_average}</span>/<span class ="votes_count">${film.vote_count}</span> </p>  
+              <p class= "modal-film__popularity modal-film__text">Popularity <span class="popularity"> ${film.popularity} </span></p>  
+              <div class = "title-item">
+              <p class= "modal-film__original-title modal-film__text">Original Title</p><p class="original_title">${film.original_title}</p>
+              </div>
+              <p class = "modal-film__genres modal-film__text">Genre <span class = "modal-film__genres-item">${genreStr} </span> </p> 
+              <p class="modal-film__about"> ABOUT </p>  
+              <p class="modal-film__description"> ${film.overview} </p>  
+                <div class = "modal-film__buttons"> 
+                  <ul class= "modal-film__list-button">  
+                    <li>  
+                    <button type="button" class = "btn_add__watched"> Add to watched</button>  
+                    </li>  
+                    <li>  
+                    <button type="button" class = "btn_add__queue"> Add to queue </button>  
+                    </li>  
+                  </ul>  
+                </div> 
+          <button class="modal-film__close" data-action="close-modal"> 
+          &#10005 
+          </button> 
+      </div>  
     </div>
     `);
 
