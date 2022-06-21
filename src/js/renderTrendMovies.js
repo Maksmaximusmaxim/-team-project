@@ -10,13 +10,33 @@ let apiService = new ApiService();
   const gallery = document.querySelector('.cards');
   const searchForm = document.querySelector('#search-form');
 searchForm.addEventListener('submit', getArticlesByQuery);
-  
+
+const options = {
+  totalItems: 5000,
+    itemsPerPage: 20,
+       visiblePages: 7,
+        centerAlign: false,
+    page: 1,
+    firstItemClassName: 'tui-first-child',
+  lastItemClassName: 'tui-last-child',
+};
+if (window.innerWidth < 768) {
+    options.visiblePages = 4;
+};
+
+
 
   function getArticlesByQuery(event){
     event.preventDefault();
     console.log(event)
     apiService.searchQuery = event.target[0].value;
-    apiService
+    apiService.getItemFetchSearchArticles()
+  .then(data => {
+    console.log(data);
+    options.totalItems = data;
+  })
+      .then(data => {
+      apiService
   .getSearchArticles()
       .then(data => {
         if (data.length === 0) {
@@ -25,15 +45,17 @@ searchForm.addEventListener('submit', getArticlesByQuery);
            document.querySelector('#pagination').classList.add('visually-hidden')
             return;
     }
+        else {
+          renderData(data);
+        }
     
-    renderData(data);
   })
   .catch(err => {
     console.log('error in function render');
   });
       
   const myPagination = new Pagination('pagination', options);
-  options.totalItems = Number(JSON.parse(localStorage.getItem('totalPages-current-data')));
+
   myPagination.on('beforeMove', async e => {
    const { page } = e;
   apiService.page = page;
@@ -47,6 +69,9 @@ searchForm.addEventListener('submit', getArticlesByQuery);
     console.log('error in function render');
   });
   });
+    })
+    
+    
   }
   
 function showError(message = ""){
@@ -93,20 +118,6 @@ apiService
 }
 
 
-const options = {
-  totalItems: 1000,
-    itemsPerPage: 20,
-       visiblePages: 7,
-        centerAlign: false,
-    page: 1,
-    firstItemClassName: 'tui-first-child',
-  lastItemClassName: 'tui-last-child',
-};
-if (window.innerWidth < 768) {
-    options.visiblePages = 4;
-};
-options.totalItems = localStorage.getItem('totalPages-current-data');
-
 const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', e => {
   gallery.innerHTML = '';
@@ -121,7 +132,6 @@ pagination.on('afterMove', e => {
     }).catch(err => {
     console.log('error in function render');
     })
-  localStorage.removeItem('totalPages-current-data');
 });
 
 

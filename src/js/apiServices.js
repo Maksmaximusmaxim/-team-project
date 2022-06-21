@@ -12,10 +12,7 @@ export default class ApiService {
       .then(response => response.json())
       .then(data => {
         data.total_results;
-        console.log(data.total_results);
-         const resultsData = JSON.stringify(data.total_results);
-        localStorage.setItem('totalPages-current-data', resultsData);
-        console.log(resultsData);
+       
         return data
       })
       .then(({ results }) => {
@@ -29,13 +26,23 @@ export default class ApiService {
       .then(response => response.json())
       .then(data => {
         data.total_results;
-        console.log(data.total_results);
-          const resultsData = JSON.stringify(data.total_results);
-        localStorage.setItem('totalPages-current-data', resultsData);
+        
         return data
       })
       .then(({ results }) => {
         return results;
+      });
+  
+  }
+
+    getItemFetchSearchArticles() {
+    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+    return fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        data.total_results;
+        
+        return data.total_results
       });
   
   }
@@ -56,7 +63,6 @@ export default class ApiService {
       .then(response => response.json())
       .then(data => {
         data.total_results;
-        console.log(data.total_results);
         return data
       })
       .then( results  => {
