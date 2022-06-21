@@ -1,50 +1,60 @@
-const BASE_URL = `https://api.themoviedb.org/3`;
+ const BASE_URL = `https://api.themoviedb.org/3`;
 const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
 export default class ApiService {
   constructor() {
     this.searchQuery = '';
     this.page = 1;
+    this.totalResults ;
   }
   fetchTrendMovies() {
     const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&language=en-US&page=${this.page}`;
     return fetch(url)
-      .then(response => response.json())
-      .then(({ results }) => {
+      .then(response => {        
+       return  response.json()
+      })
+      .then(data => {
+        this.totalResults = data.total_results;        
+        return data;
+      })
+      .then(({results }) => {       
         return results;
       });
   }
-
-  fetchSearchArticles() {
+  fetchSearchArticles() {   
     const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
     return fetch(url)
-      .then(response => response.json())
+      .then(response => {       
+        return response.json()
+      })
+      .then(data => {        
+        if (!data.total_results) {           
+          throw new Error(response.statusText);
+        };
+        this.totalResults = data.total_results;       
+        return data;
+      })
       .then(({ results }) => {
         return results;
       });
   }
-
-  fetchMovieById(id) {   
-    const url = `${BASE_URL}/movie/${id}/videos?api_key=${KEY}&language=en-US`;
-    return fetch(url)
-      .then(response => {     
-        return response.json();
-      });
-      
+  fetchMovieById(id) {
+    const url = `${BASE_URL}/movie/${id}/videos?api_key=${KEY}&language=en-US`
+     return fetch(url)
+       .then((response) => {
+         return response.json()
+       })
+       
   }
 
-
   fetchGenres() {
-    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US&page=${this.page}`;    
+    const url = `${BASE_URL}/genre/movie/list?api_key=${KEY}&language=en-US&page=${this.page}`;     
     return fetch(url)
       .then(response => response.json())
       .then( results  => {
         return results.genres;
       });
   }
-
-  
-
-  getGenreTrendMovies() {
+ getGenreTrendMovies() {
     return this.fetchTrendMovies().then(data =>{return this.formatGenreDate(data)});
   }
 
@@ -54,8 +64,7 @@ export default class ApiService {
 
 
 
-  formatGenreDate(data){
-    
+  formatGenreDate(data){    
       return this.fetchGenres().then(genresList => {
         return data.map(movie => ({
           ...movie,
