@@ -25,8 +25,10 @@ searchForm.addEventListener('submit', getArticlesByQuery);
            document.querySelector('#pagination').classList.add('visually-hidden')
             return;
     }
+        else {
+          renderData(data);
+        }
     
-    renderData(data);
   })
   .catch(err => {
     console.log('error in function render');
@@ -94,7 +96,7 @@ apiService
 
 
 const options = {
-  totalItems: 1000,
+  totalItems: JSON.parse(localStorage.getItem('totalPages-current-data')),
     itemsPerPage: 20,
        visiblePages: 7,
         centerAlign: false,
@@ -105,7 +107,7 @@ const options = {
 if (window.innerWidth < 768) {
     options.visiblePages = 4;
 };
-options.totalItems = localStorage.getItem('totalPages-current-data');
+
 
 const pagination = new Pagination('pagination', options);
 pagination.on('afterMove', e => {
