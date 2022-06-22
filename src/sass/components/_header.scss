@@ -96,14 +96,13 @@
 }
 .logo-icon {
   stroke: #818181;
+  transition: stroke 500ms ease-in-out;
 }
-.logo-icon:hover,
-.logo-icon:focus {
-  stroke: #ff6b08;
-}
+
 .title {
   display: none;
   margin-left: 8px;
+  transition: color 500ms ease-in-out;
   @media screen and (min-width: 768px) {
     font-weight: 500;
     display: flex;
@@ -115,8 +114,11 @@
     margin-left: 10px;
   }
 }
-.title:hover,
-.title:focus {
+.logo-title:hover .title,
+.logo-title:focus .title,
+.logo-title:hover .logo-icon,
+.logo-title:focus .logo-icon {
+  stroke: #ff6b08;
   color: #ff6b08;
 }
 
@@ -131,14 +133,12 @@
 }
 .list-refs {
   display: flex;
+  
 }
 .list-items:not(:last-child) {
   margin-right: 40px;
 }
-.header-refs:hover,
-.header-refs:focus {
-  color: #ff6b08;
-}
+
 .header-refs {
   position: relative;
   font-size: 12px;
@@ -146,6 +146,11 @@
   line-height: 1.16;
   color: #ffffff;
   text-transform: uppercase;
+  transition: color 500ms ease-in-out;
+}
+.header-refs:hover,
+.header-refs:focus {
+  color: #ff6b08;
 }
 .active::after {
   position: absolute;
@@ -173,7 +178,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   background-color: transparent;
   width: 100%;
-  transition: background-color 500ms;
+  transition: background-color 500ms ease-in-out;
 }
 
 .search:hover,
