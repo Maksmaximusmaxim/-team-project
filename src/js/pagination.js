@@ -35,9 +35,8 @@ export default function makePagination(total, page, search,array) {
 // }
 
 const pagination = new Pagination('pagination', options);  
-  pagination.on('afterMove', (event) => {
-  const currentPage = event.page;
-  myRender.apiService.page = currentPage;
+  pagination.on('afterMove', (event) => {  
+  myRender.apiService.page = event.page;
   if (search === 'trend') {    
     myRender.renderTrendMovies(); 
   } if(search === 'query') {    

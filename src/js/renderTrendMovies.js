@@ -37,9 +37,7 @@ function showError() {
   return Notiflix.Notify.failure("Sorry, there no results found. Try searching for something else!");
 }
 
-export function renderSearchMovies() {
-  console.log(apiService.page);
-  console.log(apiService.searchQuery);
+export function renderSearchMovies() {  
   spiner.spiner.show();
    apiService
    .getSearchArticles()
