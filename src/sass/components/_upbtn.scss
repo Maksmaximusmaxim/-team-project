@@ -11,17 +11,17 @@
 
         @media screen and (min-width: 320px) {
             
-            right: calc(((100vw - 320px) / 2));
+            right: calc(((100vw - 360px) / 2));
         }
     
         @media screen and (min-width: 768px) {
             
-            right: calc(((100vw - 768px) / 2));
+            right: calc(((100vw - 788px) / 2));
         }
     
         @media screen and (min-width: 1024px) {
             
-            right: calc(((100vw - 1060px) / 2));
+            right: calc(((100vw - 1100px) / 2));
         }
 }
 

@@ -51,7 +51,7 @@
 }
 
 .tui-pagination.custom-tui-pagination .tui-page-btn:hover {
-  background-color: #f4f4f4;
+  background-color: #ff6b08;
 }
 
 .tui-pagination.custom-tui-pagination .tui-is-selected,
@@ -206,9 +206,9 @@
   vertical-align: top;
 }
 
-.paginationNone {
-  display: none;
-}
+// .paginationNone {
+//   display: none;
+// }
 
 .tui-pagination.custom-tui-pagination .tui-prev-is-ellip,
 .tui-pagination.custom-tui-pagination .tui-next-is-ellip {
@@ -224,14 +224,14 @@
   }
 }
 
-.tui-pagination.custom-tui-pagination .tui-first,
-.tui-pagination.custom-tui-pagination .tui-last {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  clip: rect(0 0 0 0);
-}
+// .tui-pagination.custom-tui-pagination .tui-first,
+// .tui-pagination.custom-tui-pagination .tui-last {
+//   position: absolute;
+//   width: 1px;
+//   height: 1px;
+//   margin: -1px;
+//   padding: 0;
+//   overflow: hidden;
+//   border: 0;
+//   clip: rect(0 0 0 0);
+// }

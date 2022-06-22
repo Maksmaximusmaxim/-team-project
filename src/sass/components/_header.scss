@@ -1,4 +1,7 @@
 .header {
+
+  height: 230px;
+
   // min-width: 100%;
   margin: 0 auto;
   padding-top: 40px;
@@ -28,6 +31,7 @@
     }
   }
   @media screen and (min-width: 1024px) {
+    height: 216px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(/src/images/deskheader-1x.jpg);
     @media (min-device-pixel-ratio: 2),
@@ -78,28 +82,20 @@
     }
   }
 }
-
-.logo-icon {
-  stroke: #818181;
-  transition: stroke 500ms ease-in-out;
-}
 .logo-title {
   display: flex;
   align-items: center;
 }
-.logo-title:hover .logo-icon,
-.logo-title:hover .logo-icon {
+.logo-icon {
+  stroke: #818181;
+}
+.logo-icon:hover,
+.logo-icon:focus {
   stroke: #ff6b08;
 }
-.logo-title:hover .title,
-.logo-title:hover .title {
-  color: #ff6b08;
-}
-
 .title {
   display: none;
   margin-left: 8px;
-  transition: color 500ms ease-in-out;
   @media screen and (min-width: 768px) {
     font-weight: 500;
     display: flex;
@@ -110,6 +106,10 @@
   @media screen and (min-width: 1024px) {
     margin-left: 10px;
   }
+}
+.title:hover,
+.title:focus {
+  color: #ff6b08;
 }
 
 .header-wrapper {
@@ -126,9 +126,6 @@
 }
 .list-items:not(:last-child) {
   margin-right: 40px;
-}
-.header-refs {
-  transition: color 500ms ease-in-out;
 }
 .header-refs:hover,
 .header-refs:focus {
@@ -168,8 +165,9 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.25);
   background-color: transparent;
   width: 100%;
-  transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms;
 }
+
 .search:hover,
 .search:focus {
   outline: none;
@@ -184,14 +182,25 @@
   color: #ffffff;
 }
 .btn-search {
-  border: none;
-  background-color: transparent;
-}
-.icon-search {
+  width: 12px;
+  height: 12px;
   position: absolute;
+  z-index: 10;
   right: 4px;
   top: 10px;
+  border: none;
+  cursor: pointer;
+  background-image: url(/src/images/search.svg);
+  background-size: cover;
+  background-color: transparent;
 }
+// .icon-search {
+//   width: 12px;
+//   position: relative;
+//   // z-index: 10;
+//   // right: 4px;
+//   // top: 10px;
+// }
 .list-btn {
   display: flex;
   justify-content: space-between;
@@ -218,7 +227,7 @@
   border: 1px solid #ffffff;
   border-radius: 5px;
   text-transform: uppercase;
-  transition: background-color 500ms ease-in-out;
+  transition: background-color 500ms;
 }
 .btn:hover,
 .btn:focus {
