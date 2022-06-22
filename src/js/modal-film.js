@@ -27,8 +27,10 @@ function fetchFilm(filmId) {
     .then(response => response.json())
     .then(film => {
       let genreStr = '';
+      let arrayNames = [];
       film.genres.forEach(function (genre) {
-        genreStr += genre.name + ' ';
+        arrayNames.push(genre.name);
+        genreStr = arrayNames.join(', ');
       });
 
       instance = basicLightbox.create(`  
