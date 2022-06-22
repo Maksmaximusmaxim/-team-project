@@ -43,12 +43,12 @@ export function renderSearchMovies() {
   spiner.spiner.show();
    apiService
    .getSearchArticles()
-     .then(data => {        
-       renderData(data);
+     .then(renderData)
+     .then(() => {
        makePagination(apiService.totalResults, apiService.page, 'query')
     spiner.spiner.close();
-    window.scrollTo({ top: 0, behavior: 'smooth' });    
-    })
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+     })
      .catch(err => {
        apiService.page = 1;
       renderTrendMovies();
@@ -61,12 +61,12 @@ export function renderTrendMovies() {
   spiner.spiner.show();
   apiService
   .getGenreTrendMovies()
- .then(data => {   
-   renderData(data);   
-   makePagination(apiService.totalResults, apiService.page,'trend' )
+  .then(renderData)
+  .then(() => {
+      makePagination(apiService.totalResults, apiService.page,'trend' )
     spiner.spiner.close();
-    window.scrollTo({ top: 0, behavior: 'smooth' });    
-  })
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    })
   .catch(err => {
     console.log('error in function renderTrendMovies');
   });    
