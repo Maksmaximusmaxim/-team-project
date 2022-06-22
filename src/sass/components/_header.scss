@@ -1,8 +1,4 @@
 .header {
-
-  height: 230px;
-
-  // min-width: 100%;
   margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 92px;
@@ -31,7 +27,7 @@
     }
   }
   @media screen and (min-width: 1024px) {
-    height: 216px;
+    
     background-image: linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
       url(/src/images/deskheader-1x.jpg);
     @media (min-device-pixel-ratio: 2),
@@ -43,6 +39,18 @@
         ),
         url(/src/images/deskheader-2x.jpg);
     }
+  }
+}
+.header.header-library{
+  padding-bottom: 62px;
+  @media screen and (min-width: 768px) {
+    padding-bottom: 60px;
+  }
+}
+.header-library .header-wrapper{
+  margin-bottom: 60px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 40px;
   }
 }
 .header-library {
@@ -158,7 +166,7 @@
   }
 }
 .search {
-  padding: 10px 25px 4px 4px;
+  padding: 5px 25px 4px 4px;
   border-right: none;
   border-top: none;
   border-left: none;
@@ -187,7 +195,7 @@
   position: absolute;
   z-index: 10;
   right: 4px;
-  top: 10px;
+  top: 8px;
   border: none;
   cursor: pointer;
   background-image: url(/src/images/search.svg);
