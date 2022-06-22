@@ -5,16 +5,24 @@ import * as renderTrend from './renderTrendMovies';
 
 const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
   
+//Картинки-нотіфікашки для порожньоїбібліотеки
+import noFilmImgURL from '../images/nothingToSee.jpg';
+// import noFilmImgURL from '../images/nothingToSee1.jpg';
+// import noFilmImgURL from '../images/nothingToSee2.jpg';
+// import noFilmImgURL from '../images/nothingToSee4.jpg';
 
 
 const refs = {
+  galary: document.querySelector('.gallery'),
   homeEl: document.querySelector('.header-refs'),
   libraryEl: document.querySelector('.refs-library'),
   formEl: document.querySelector('.search-form'),
   headerEl: document.querySelector('header'),
 };
 
+
 const galleryEl = document.querySelector('.cards');
+const noFilmsMarkup = `<li class='noFilmsNotify container'><img src='${noFilmImgURL}' alt='Empty cinema' class='nothingImg'></li>`;
 
 refs.libraryEl.addEventListener('click', onLibraryClick);
 refs.homeEl.addEventListener('click', onHomeClick);
@@ -69,8 +77,8 @@ function changeMarkup() {
     galleryEl.innerHTML = '';
 
     if (watchedMoviesIds.length === 0) {      
-      galleryEl.innerHTML =
-        'Sorry, there are no movies in your WATCHED collection';
+      galleryEl.innerHTML = noFilmsMarkup;
+       document.querySelector('#pagination').classList.add('visually-hidden');
       return;
     } else { 
       let page = 1;
@@ -90,14 +98,29 @@ function changeMarkup() {
     const librKey = 'Queue';
     const queueMoviesIds = LocalStorageAPI.getMovies(librKey);
 
-    galleryEl.innerHTML = '';
+      galleryEl.innerHTML = '';
+      
+      if (queueMoviesIds.length === 0) {      
+        galleryEl.innerHTML = noFilmsMarkup;
+        document.querySelector('#pagination').classList.add('visually-hidden');
+      return;
+    } else { 
       let page = 1;
       let onPage = 20;
       let start = (page - 1) * onPage;
       let end = start + onPage;
       let cards = queueMoviesIds.slice(start, end);
-      renderDataByArray(cards);      
-      makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);    
+      renderDataByArray(cards);   // рендеримо розмітку      
+      makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);      
+      }
+      
+      // let page = 1;
+      // let onPage = 20;
+      // let start = (page - 1) * onPage;
+      // let end = start + onPage;
+      // let cards = queueMoviesIds.slice(start, end);
+      // renderDataByArray(cards);      
+      // makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);    
   });
   watchedLibrEl.focus();
   watchedLibrEl.click();
