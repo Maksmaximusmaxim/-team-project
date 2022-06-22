@@ -19,7 +19,7 @@ const createCard = () => {
    <picture>
    <source media="(max-width: 755px)" srcset="${Phone}">
    <source media="(min-width: 756px)" srcset="${laptop}">
-<img class="modal-img" src="${url}" alt="${nameEmp}">
+<img loading="lazy" class="modal-img" src="${url}" alt="${nameEmp}">
 </picture>
    <a href="${href}" target="_blank"><svg class="card-icon">
       <use href="${iconUrl}#github"></use></svg></a>
