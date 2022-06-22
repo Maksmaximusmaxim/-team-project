@@ -1,12 +1,11 @@
 const gallery = document.querySelector('.cards');
 
 export default function renderData(data) { 
-   document.querySelector('#pagination').classList.remove('visually-hidden');
-  console.log(data);
+   document.querySelector('#pagination').classList.remove('visually-hidden'); 
   gallery.innerHTML = '';
   return data.forEach(function (element) {
     let genreStr = "";
-
+    let str = [];
     if (element.genres.length === 0) {
       let item = `<li class="movie_card">
         <img src="https://image.tmdb.org/t/p/original${element.poster_path}" onerror="this.onerror=null;this.src='https://dummyimage.com/600x400/000/fff&text=Filmoteka';" alt="${element.title}" loading="lazy" data-id = ${element.id} class="list__img"/>
@@ -18,16 +17,21 @@ export default function renderData(data) {
       </li>`;
   gallery.insertAdjacentHTML("beforeend", item);
     } else {
+      element.genres.forEach((genre) => {
+        
+        str.push(genre.name);
+        // console.log(genre.name);
+      })
+      
       if (element.genres.length > 2) {
         
-          let genrList = element.genres[0].name + '  '+ element.genres[1].name ;
-          genreStr = genrList + ' Others';
+          let genrList = element.genres[0].name + ',  '+ element.genres[1].name ;
+          genreStr = genrList + ', Others';
         
-      } else {
-       element.genres.forEach(function (genre) {
-      genreStr += genre.name + '  ';
-    }); 
+      } else {      
+      genreStr = str.join(', ');    
       }
+      // console.log(str.join(', '));
       
  let item = `<li class="movie_card">
         <img src="https://image.tmdb.org/t/p/original${element.poster_path}" onerror="this.onerror=null;this.src='https://dummyimage.com/600x400/000/fff&text=Filmoteka';" alt="${element.title}" loading="lazy" data-id = ${element.id} class="list__img"/>
