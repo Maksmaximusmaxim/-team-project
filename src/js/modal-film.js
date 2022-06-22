@@ -50,10 +50,10 @@ function fetchFilm(filmId) {
                 <div class = "modal-film__buttons"> 
                   <ul class= "modal-film__list-button">  
                     <li>  
-                    <button type="button" class = "btn_add__watched"> Add to watched</button>  
+                    <button type="button" class = "btn_add__watched">Add to watched</button>  
                     </li>  
                     <li>  
-                    <button type="button" class = "btn_add__queue"> Add to queue </button>  
+                    <button type="button" class = "btn_add__queue">Add to queue</button>  
                     </li>  
                   </ul>  
                 </div> 

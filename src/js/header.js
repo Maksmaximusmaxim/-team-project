@@ -1,8 +1,13 @@
 import LocalStorageAPI from './localStorageAPI';
-import Pagination  from 'tui-pagination';
+import Pagination from 'tui-pagination';
+
+//Картинки-нотіфікашки для порожньоїбібліотеки
+import noFilmImgURL from '../images/nothingToSee.jpg';
+// import noFilmImgURL from '../images/nothingToSee1.jpg';
+// import noFilmImgURL from '../images/nothingToSee2.jpg';
+// import noFilmImgURL from '../images/nothingToSee4.jpg';
 
 const KEY = `f83ab619d56ba761ff69bc866a8288d9`;
-  
 
 const refs = {
   homeEl: document.querySelector('.header-refs'),
@@ -29,6 +34,8 @@ function changeMarkup() {
  <li class="list-btn-item"><button type="button" class="btn" id="queueLibr">queue</button></li>`;
   refs.formEl.innerHTML = markup;
 
+  const noFilmsMarkup = `<li class='noFilmsNotify container'><img src='${noFilmImgURL}' alt='Empty cinema' class='nothingImg'></li>`;
+
   const watchedLibrEl = document.querySelector('#watchedLibr');
   const queueLibrEl = document.querySelector('#queueLibr');
 
@@ -42,12 +49,12 @@ function changeMarkup() {
     galleryEl.innerHTML = '';
 
     if (watchedMoviesIds.length === 0) {
-       document.querySelector('#pagination').classList.add('visually-hidden');
-      galleryEl.innerHTML =
-        'Sorry, there are no movies in your WATCHED collection';
+      document.querySelector('#pagination').classList.add('visually-hidden');
+
+      galleryEl.innerHTML = noFilmsMarkup;
       return;
     } else {
-       document.querySelector('#pagination').classList.add('visually-hidden');
+      document.querySelector('#pagination').classList.add('visually-hidden');
       const films = await fetchFilms(watchedMoviesIds); // отримуємо масив об'єктів фільмів по ІД
       renderData(films); // рендеримо розмітку
     }
@@ -63,12 +70,12 @@ function changeMarkup() {
     galleryEl.innerHTML = '';
 
     if (queueMoviesIds.length === 0) {
-       document.querySelector('#pagination').classList.add('visually-hidden');
-      galleryEl.innerHTML =
-        'Sorry, there are no movies in your QUEUE collection';
+      document.querySelector('#pagination').classList.add('visually-hidden');
+
+      galleryEl.innerHTML = noFilmsMarkup;
       return;
     } else {
-       document.querySelector('#pagination').classList.add('visually-hidden');
+      document.querySelector('#pagination').classList.add('visually-hidden');
       const films = await fetchFilms(queueMoviesIds); // отримуємо масив об'єктів фільмів по ІД
       renderData(films); // рендеримо розмітку
     }
