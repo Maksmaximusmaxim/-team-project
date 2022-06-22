@@ -104,3 +104,13 @@
   padding: 0;
   overflow: hidden;
 }
+
+.noFilmsNotify {    
+      @media screen and (min-width: 768px) {
+        margin-left: calc(1 * 32px);
+      }
+    
+      @media screen and(min-width: 1024px) {
+        margin-left: calc(1 * 16px);
+      }
+}
