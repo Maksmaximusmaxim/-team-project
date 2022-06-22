@@ -74,13 +74,7 @@ function changeMarkup() {
     
     const watchedMoviesIds = LocalStorageAPI.getMovies(librKey); //отримуємо масив ІД
 
-    galleryEl.innerHTML = '';
-
-    if (watchedMoviesIds.length === 0) {      
-      galleryEl.innerHTML = noFilmsMarkup;
-       document.querySelector('#pagination').classList.add('visually-hidden');
-      return;
-    } else { 
+    galleryEl.innerHTML = '';   
       let page = 1;
       let onPage = 20;
       let start = (page - 1) * onPage;
@@ -88,7 +82,7 @@ function changeMarkup() {
       let cards = watchedMoviesIds.slice(start, end);
       renderDataByArray(cards);   // рендеримо розмітку      
       makePagination(watchedMoviesIds.length, page,'myLibrary', watchedMoviesIds);      
-    }
+    
   });
 
     queueLibrEl.addEventListener('click', async () => {
@@ -98,29 +92,14 @@ function changeMarkup() {
     const librKey = 'Queue';
     const queueMoviesIds = LocalStorageAPI.getMovies(librKey);
 
-      galleryEl.innerHTML = '';
-      
-      if (queueMoviesIds.length === 0) {      
-        galleryEl.innerHTML = noFilmsMarkup;
-        document.querySelector('#pagination').classList.add('visually-hidden');
-      return;
-    } else { 
+      galleryEl.innerHTML = '';           
       let page = 1;
       let onPage = 20;
       let start = (page - 1) * onPage;
       let end = start + onPage;
       let cards = queueMoviesIds.slice(start, end);
       renderDataByArray(cards);   // рендеримо розмітку      
-      makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);      
-      }
-      
-      // let page = 1;
-      // let onPage = 20;
-      // let start = (page - 1) * onPage;
-      // let end = start + onPage;
-      // let cards = queueMoviesIds.slice(start, end);
-      // renderDataByArray(cards);      
-      // makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);    
+      makePagination(queueMoviesIds.length, page,'myLibrary', queueMoviesIds);       
   });
   watchedLibrEl.focus();
   watchedLibrEl.click();
@@ -129,8 +108,8 @@ function changeMarkup() {
 
 export async function renderDataByArray(array) {
   if (array.length === 0) {    
-    galleryEl.innerHTML =
-      'Sorry, there are no movies in your QUEUE collection';
+    galleryEl.innerHTML = noFilmsMarkup;
+        document.querySelector('#pagination').classList.add('visually-hidden');
     return;
   } else {     
     const films = await fetchFilms(array);

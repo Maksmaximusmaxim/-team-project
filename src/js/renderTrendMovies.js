@@ -19,6 +19,7 @@ renderTrendMovies();
 
   
 function getArticlesByQuery(event) {
+  // console.log(searchForm.elements.searchQuery.value);
   if (!event.target[0].value) {
      event.preventDefault();
     return renderTrendMovies();
@@ -36,7 +37,9 @@ function showError() {
   return Notiflix.Notify.failure("Sorry, there no results found. Try searching for something else!");
 }
 
-export function renderSearchMovies() {   
+export function renderSearchMovies() {
+  console.log(apiService.page);
+  console.log(apiService.searchQuery);
   spiner.spiner.show();
    apiService
    .getSearchArticles()
@@ -47,9 +50,10 @@ export function renderSearchMovies() {
     window.scrollTo({ top: 0, behavior: 'smooth' });    
     })
      .catch(err => {
+       apiService.page = 1;
       renderTrendMovies();
      showError()
-     console.log('error in function render');
+     console.log('error in function renderSearchMovies');
     });    
 }
 
@@ -64,6 +68,6 @@ export function renderTrendMovies() {
     window.scrollTo({ top: 0, behavior: 'smooth' });    
   })
   .catch(err => {
-    console.log('error in function render');
+    console.log('error in function renderTrendMovies');
   });    
 }
