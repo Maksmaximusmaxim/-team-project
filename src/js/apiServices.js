@@ -65,10 +65,14 @@ export default class ApiService {
 
 
   formatGenreDate(data){    
-      return this.fetchGenres().then(genresList => {
-        return data.map(movie => ({
+    return this.fetchGenres().then(genresList => {        
+        return data.map(movie => (
+          
+          {
           ...movie,
-          release_date: movie.release_date.split('-')[0],
+          release_date: movie.release_date
+            ? movie.release_date.split('-')[0]
+            : 'n/a',
           genres: movie.genre_ids
             .map(id => genresList.filter(el => el.id === id))
             .flat(),
