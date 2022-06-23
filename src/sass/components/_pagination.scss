@@ -224,14 +224,14 @@
   }
 }
 
-// .tui-pagination.custom-tui-pagination .tui-first,
-// .tui-pagination.custom-tui-pagination .tui-last {
-//   position: absolute;
-//   width: 1px;
-//   height: 1px;
-//   margin: -1px;
-//   padding: 0;
-//   overflow: hidden;
-//   border: 0;
-//   clip: rect(0 0 0 0);
-// }
+.tui-pagination.custom-tui-pagination .tui-first,
+.tui-pagination.custom-tui-pagination .tui-last {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}

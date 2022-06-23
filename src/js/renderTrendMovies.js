@@ -61,10 +61,12 @@ export function renderTrendMovies() {
   .getGenreTrendMovies()
   .then(renderData)
   .then(() => {
-      makePagination(apiService.totalResults, apiService.page,'trend' )
+    makePagination(apiService.totalResults, apiService.page, 'trend')
+    
     spiner.spiner.close();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    })
+  })
+    
   .catch(err => {
     console.log('error in function renderTrendMovies');
   });    

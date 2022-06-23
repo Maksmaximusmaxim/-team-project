@@ -29,10 +29,13 @@ export default function makePagination(total, page, search,array) {
       '<span class="tui-ico-ellip">...</span>' +
       '</a>'
   }
-};
-// if (window.innerWidth < 768) {
-//   options.visiblePages = 4;
-// }
+  
+  };
+  
+  if (window.innerWidth < 767) {
+  options.visiblePages = 4;
+}
+
 
 const pagination = new Pagination('pagination', options);  
   pagination.on('afterMove', (event) => {  
