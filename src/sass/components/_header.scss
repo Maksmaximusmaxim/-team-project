@@ -1,4 +1,5 @@
 .header {
+  width: 100%;
   margin: 0 auto;
   padding-top: 40px;
   padding-bottom: 92px;
@@ -43,7 +44,9 @@
 }
 .header.header-library{
   padding-bottom: 62px;
+  max-height: 230px;
   @media screen and (min-width: 768px) {
+    max-height: 218px;
     padding-bottom: 60px;
   }
 }
