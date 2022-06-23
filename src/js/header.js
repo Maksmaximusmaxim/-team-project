@@ -20,7 +20,7 @@ const refs = {
   headerEl: document.querySelector('header'),
 };
 
-const footerEl = document.querySelector('footer');
+
 
 const galleryEl = document.querySelector('.cards');
 const noFilmsMarkup = `<li class='noFilmsNotify container'><img src='${noFilmImgURL}' alt='Empty cinema' class='nothingImg'></li>`;
@@ -36,7 +36,6 @@ function onHomeClick(event) {
   changeBackgroundImgHome();
   renderTrend.apiService.page = 1;
   renderTrend.renderTrendMovies();
-  footerEl.classList.remove('footer-wrap');
 }
 
 function onLibraryClick(event) {
@@ -45,7 +44,6 @@ function onLibraryClick(event) {
   refs.libraryEl.classList.add('active');
   changeMarkup();
   changeBackgroundImg();
-  footerPosition();
 }
 
 function changeMarkupHome() {
@@ -138,14 +136,6 @@ async function fetchFilms(ids) {
   });
   const films = await Promise.all(arrayOfPromises);
   return films;
-}
-
-function footerPosition(){
- 
-  if(refs.headerEl.classList.contains('header-library')){
-footerEl.classList.add('footer-wrap');
-  } 
-    // footerEl.classList.remove('footer-wrap');
 }
 
 
