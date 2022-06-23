@@ -7,7 +7,7 @@ export default class ApiService {
     this.totalResults ;
   }
   fetchTrendMovies() {
-    const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&language=en-US&page=${this.page}`;
+    const url = `${BASE_URL}/trending/movie/week?api_key=${KEY}&language=en-US&page=${this.page}&include_adult=false`;
     return fetch(url)
       .then(response => {        
        return  response.json()
@@ -21,7 +21,7 @@ export default class ApiService {
       });
   }
   fetchSearchArticles() {   
-    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}`;
+    const url = `${BASE_URL}/search/movie?api_key=${KEY}&language=en-US&page=${this.page}&query=${this.searchQuery}&include_adult=false`;
     return fetch(url)
       .then(response => {       
         return response.json()
@@ -62,17 +62,16 @@ export default class ApiService {
     return this.fetchSearchArticles().then(data =>{return this.formatGenreDate(data)});
   }
 
-
-
+ 
   formatGenreDate(data){    
-    return this.fetchGenres().then(genresList => {        
+    return this.fetchGenres().then(genresList => {       
         return data.map(movie => (
           
           {
           ...movie,
-          release_date: movie.release_date
-            ? movie.release_date.split('-')[0]
-            : 'n/a',
+          // release_date: movie.release_date
+          //   ? movie.release_date.split('-')[0]
+          //   : 'n/a',
           genres: movie.genre_ids
             .map(id => genresList.filter(el => el.id === id))
             .flat(),
